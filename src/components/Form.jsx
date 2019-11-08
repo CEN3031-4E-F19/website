@@ -9,7 +9,7 @@ class Form extends Component {
             ageHouse: '',
             address: '',
             problem: false,
-            knowProb: false,
+            knowProb: 'No',
             questions: '',
           };
         this.handleNameChange=this.handleNameChange.bind(this);
@@ -17,6 +17,8 @@ class Form extends Component {
         this.handleEmailChange=this.handleEmailChange.bind(this);
         this.handleAddressChange=this.handleAddressChange.bind(this);
         this.handleAgeChange=this.handleAgeChange.bind(this);
+        this.handleQuestionChange=this.handleQuestionChange.bind(this);
+        this.handleKnowProb=this.handleKnowProb.bind(this);
     }
 
     handleNameChange(event){
@@ -35,6 +37,11 @@ class Form extends Component {
     }
     handleQuestionChange(event){
         this.setState({questions:event.target.value});
+    }
+
+    handleKnowProb(event){
+        this.setState({knowProb:event.target.value})
+        console.log(this.state.knowProb)
     }
 
     handleSubmit(event){
@@ -68,6 +75,23 @@ class Form extends Component {
                         House Age:
                         <input id="houseAge" type="text" onChange={this.handleAgeChange}></input>
                     </label>
+                </div>
+                <div>
+                    <p>
+                        Do you know the problem with your Water?
+                    </p>
+                        <label>
+                            No {' '}
+                            <input name="knowProb"type="radio" value="No" defaultChecked onClick={this.handleKnowProb}></input>
+                        </label>
+                        <label className ="m-2">
+                            Yes {' '}
+                            <input name="knowProb" type="radio" value="Yes" onClick={this.handleKnowProb}></input>
+                        </label>
+
+                </div>
+                <div>
+                    {this.state.knowProb==="Yes"? <input type="text"></input>:<span/>}
                 </div>
                 <div>
                     <label>
