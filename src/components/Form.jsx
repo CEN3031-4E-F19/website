@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import * as emailjs from 'emailjs-com'
+import { template } from '@babel/core';
+import { throwStatement, restElement } from '@babel/types';
 
 class Form extends Component {
     constructor(props) {
@@ -14,6 +17,7 @@ class Form extends Component {
             problemDesc: ''
           };
         this.handleChange=this.handleChange.bind(this);
+        this.handleSubmit=this.handleSubmit.bind(this);
     }
 
     handleChange(event){
@@ -24,13 +28,40 @@ class Form extends Component {
     }
 
     handleSubmit(event){
-        console.log(this.state);
+        
+        //console.log(this.state);
+        const { clientName, clientEmail, clientHouseAge, clientAddress, problemDesc, clientQuestion } = this.state;
+        let message = {
+            clientHouseAge,
+            clientAddress
+        }
+        let templateParams = {
+            from_name: clientName,
+            to_name: 'spencer.comora@gmail.com',
+            message_html:   'Client name:\t'+ clientName + '\n'
+                            + 'Client email:\t' + clientEmail + '\n'
+                            + 'Client address:\t' + clientAddress + '\n'
+                            + 'Client house age:\t' + clientHouseAge + '\n'
+                            + 'Client problem description:\t' + problemDesc + '\n'
+                            + 'Client question:\t' + clientQuestion
+
+            
+        }
+        console.log(templateParams);
+        // emailjs.send(
+        //     'spencer_gmail',
+        //     'template_XadAOTCZ',
+        //      templateParams,
+        //     'user_M6kLPVJil1znauH2TGfwg'
+        // );
+        event.reset();
         event.preventDefault();
+        
     }
     
     render() { 
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form id="contactForm" onSubmit={this.handleSubmit}>
                 <div className="form-group">
                     <label>
                         Name:
