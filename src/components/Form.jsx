@@ -34,25 +34,25 @@ class Form extends Component {
                 <div className="form-group">
                     <label>
                         Name:
-                        <input id="name" name="clientName" type="text" onChange={this.handleChange}/>
+                        <input id="name" name="clientName" type="text" className="form-control" onChange={this.handleChange}/>
                     </label>
                 </div>
                 <div>
                     <label>
                         Email:
-                        <input id="email" name="clientEmail" type ="text" onChange={this.handleChange}/>
+                        <input id="email" name="clientEmail" type ="text" className="form-control" placeholder="name@example.com" onChange={this.handleChange}/>
                     </label>
                 </div>
                 <div className="form-group">
                     <label>
                         Address:
-                        <input id="address" name="clientAddress" type="text" onChange={this.handleChange}/>
+                        <input id="address" name="clientAddress" className="form-control"type="text" onChange={this.handleChange}/>
                     </label>
                 </div>
                 <div className="form-group">
                     <label>
                         House Age:
-                        <input id="houseAge" name="clientHouseAge" type="text" onChange={this.handleChange}/>
+                        <input id="houseAge" name="clientHouseAge" type="text" className="form-control" onChange={this.handleChange}/>
                     </label>
                 </div>
                 <div className="form-group">
@@ -70,23 +70,23 @@ class Form extends Component {
 
                 </div>
                 <div className="form-group">
-                    {this.state.knowProb==="Yes"? <label> Please describe your problem<input name ="problemDesc"type="text" onChange={this.handleChange}/></label>:
+                    {this.state.knowProb==="Yes"? <label> Please describe your problem<textarea name ="problemDesc" cols="50" rows="5" className="form-control" row="3" onChange={this.handleChange}/></label>:
                     <span/>}
                 </div>
                 <div className="form-group">
                     <label>Please upload any relevent information
-                        <input type="file"/>                        
+                        <input type="file" className="form-control-file"/>                        
                     </label>
 
                 </div>
                 <div className="form-group">
                     <label>
                         Questions:
-                        <input id="question" name="clientQuestion" type="text" onChange={this.handleChange}></input>
+                        <textarea id="question" name="clientQuestion" cols="50" rows="5" className="form-control" onChange={this.handleChange}></textarea>
                     </label>
                 </div>
 
-                <button>submit</button>
+                <button className="btn btn-primary">submit</button>
             </form>
 
 
