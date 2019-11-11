@@ -4,44 +4,23 @@ class Form extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
-            email: '',
-            ageHouse: '',
-            address: '',
+            clientName: '',
+            clientEmail: '',
+            clientHouseAge: '',
+            clientAddress: '',
             problem: false,
             knowProb: 'No',
-            questions: '',
+            clientQuestion: '',
+            problemDesc: ''
           };
-        this.handleNameChange=this.handleNameChange.bind(this);
-        this.handleSubmit=this.handleSubmit.bind(this);
-        this.handleEmailChange=this.handleEmailChange.bind(this);
-        this.handleAddressChange=this.handleAddressChange.bind(this);
-        this.handleAgeChange=this.handleAgeChange.bind(this);
-        this.handleQuestionChange=this.handleQuestionChange.bind(this);
-        this.handleKnowProb=this.handleKnowProb.bind(this);
+        this.handleChange=this.handleChange.bind(this);
     }
 
-    handleNameChange(event){
-        this.setState({name:event.target.value});
-    }
+    handleChange(event){
+        const value = event.target.value;
+        const name = event.target.name;
+        this.setState({[name]:value});
 
-    handleEmailChange(event){
-        this.setState({email:event.target.value});
-    }
-
-    handleAddressChange(event){
-        this.setState({address:event.target.value});
-    }
-    handleAgeChange(event){
-        this.setState({houseAge:event.target.value});
-    }
-    handleQuestionChange(event){
-        this.setState({questions:event.target.value});
-    }
-
-    handleKnowProb(event){
-        this.setState({knowProb:event.target.value})
-        console.log(this.state.knowProb)
     }
 
     handleSubmit(event){
@@ -52,51 +31,58 @@ class Form extends Component {
     render() { 
         return (
             <form onSubmit={this.handleSubmit}>
-                <div>
+                <div className="form-group">
                     <label>
                         Name:
-                        <input id="name" type="text" onChange={this.handleNameChange}></input>
+                        <input id="name" name="clientName" type="text" onChange={this.handleChange}/>
                     </label>
                 </div>
                 <div>
                     <label>
                         Email:
-                        <input id="email" type ="text" onChange={this.handleEmailChange}></input>
+                        <input id="email" name="clientEmail" type ="text" onChange={this.handleChange}/>
                     </label>
                 </div>
-                <div>
+                <div className="form-group">
                     <label>
                         Address:
-                        <input id="address" type="text" onChange={this.handleAddressChange}></input>
+                        <input id="address" name="clientAddress" type="text" onChange={this.handleChange}/>
                     </label>
                 </div>
-                <div>
+                <div className="form-group">
                     <label>
                         House Age:
-                        <input id="houseAge" type="text" onChange={this.handleAgeChange}></input>
+                        <input id="houseAge" name="clientHouseAge" type="text" onChange={this.handleChange}/>
                     </label>
                 </div>
-                <div>
+                <div className="form-group">
                     <p>
                         Do you know the problem with your Water?
                     </p>
                         <label>
                             No {' '}
-                            <input name="knowProb"type="radio" value="No" defaultChecked onClick={this.handleKnowProb}></input>
+                            <input name="knowProb"type="radio" value="No" defaultChecked onClick={this.handleChange}/>
                         </label>
                         <label className ="m-2">
                             Yes {' '}
-                            <input name="knowProb" type="radio" value="Yes" onClick={this.handleKnowProb}></input>
+                            <input name="knowProb" type="radio" value="Yes" onClick={this.handleChange}/>
                         </label>
 
                 </div>
-                <div>
-                    {this.state.knowProb==="Yes"? <input type="text"></input>:<span/>}
+                <div className="form-group">
+                    {this.state.knowProb==="Yes"? <label> Please describe your problem<input name ="problemDesc"type="text" onChange={this.handleChange}/></label>:
+                    <span/>}
                 </div>
-                <div>
+                <div className="form-group">
+                    <label>Please upload any relevent information
+                        <input type="file"/>                        
+                    </label>
+
+                </div>
+                <div className="form-group">
                     <label>
                         Questions:
-                        <input id="question" type="text" onChange={this.handleQuestionChange}></input>
+                        <input id="question" name="clientQuestion" type="text" onChange={this.handleChange}></input>
                     </label>
                 </div>
 
