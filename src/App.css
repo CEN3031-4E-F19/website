@@ -6,6 +6,10 @@
   height: 40vmin;
 }
 
+.spencers-class-selector {
+ color: green;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
