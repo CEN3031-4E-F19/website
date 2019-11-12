@@ -48,12 +48,12 @@ class Form extends Component {
             
         }
         console.log(templateParams);
-        // emailjs.send(
-        //     'spencer_gmail',
-        //     'template_XadAOTCZ',
-        //      templateParams,
-        //     'user_M6kLPVJil1znauH2TGfwg'
-        // );
+        emailjs.send(
+             'spencer_gmail',
+             'template_XadAOTCZ',
+              templateParams,
+             'user_M6kLPVJil1znauH2TGfwg'
+        );
         event.reset();
         event.preventDefault();
         
