@@ -61,7 +61,7 @@ class Form extends Component {
     
     render() { 
         return (
-            <form className="text-center" id="contactForm" onSubmit={this.handleSubmit}>
+            <form className="text-center" id="contactForm" onSubmit={this.handleSubmit} >
                 <div className="form-group">
                     <label>
                         Name:
