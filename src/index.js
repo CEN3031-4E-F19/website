@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Route,Link,BrowserRouter as Router} from 'react-router-dom';
+import {Route,Link,Switch,BrowserRouter as Router} from 'react-router-dom';
 import './index.css';
 import App from './App';
 import Form from './components/Form'
@@ -10,8 +10,15 @@ import 'bootstrap/dist/css/bootstrap.css';
 const routing =(
     <Router>
         <div>
-           <Route exact path="/" component={App}/>
-           <Route path="/Contact" component={Form}/>
+           <Switch> 
+           <Route exact path="/">
+               <App/>
+           </Route>
+           <Route path="/Contact">
+               <Form/>
+           </Route>
+           </Switch>
+        
         </div>
     </Router>
 )
