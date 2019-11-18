@@ -5,6 +5,7 @@ var client = require('../controllers/client.server.controller.js')
 
 router.post('/clientFormSubmit', (req, res) => {
   let client = new Client();
+  console.log(req.body);
   const { 
     clientName, 
     clientEmail, 

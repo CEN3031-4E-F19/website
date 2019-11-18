@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import * as emailjs from 'emailjs-com'
+import * as emailjs from 'emailjs-com';
 import { template } from '@babel/core';
 import { throwStatement, restElement } from '@babel/types';
+import axios from 'axios';
 
 class Form extends Component {
     constructor(props) {
@@ -54,6 +55,22 @@ class Form extends Component {
               templateParams,
              'user_M6kLPVJil1znauH2TGfwg'
         );
+        let clientObject = {
+            
+            clientName: clientName, 
+            clientEmail: clientEmail, 
+            clientHouseAge: clientHouseAge, 
+            clientAddress: clientAddress, 
+            problemDesc: problemDesc, 
+            clientQuestion: clientQuestion
+        }
+
+        axios.post('http://localhost:5000/api/clientFormSubmit', clientObject)
+            .then((res) => {
+                console.log(res.data);
+                alert(res.data);
+            });
+
         event.reset();
         event.preventDefault();
         
