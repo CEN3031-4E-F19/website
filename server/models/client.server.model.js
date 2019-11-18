@@ -11,11 +11,7 @@ var clientSchema = new Schema({
   //Check out - https://mongoosejs.com/docs/guide.html
   clientName: String,
   clientEmail: String,
-  coordinates: [{
-    latitude: Number,
-    longitude: Number
-  }],
-  address: String,
+  clientAddress: String,
   clientHouseAge: Number,
   clientHasProblem: Boolean,
   clientKnowsProblem: Boolean,
