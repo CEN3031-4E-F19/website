@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Route,Link,Switch,BrowserRouter as Router} from 'react-router-dom';
 import './index.css';
+import NavBar from './components/NavBar';
 import App from './App';
 import Form from './components/Form';
 import Error from './components/Error';
@@ -11,6 +12,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 const routing =(
     <Router>
         <div>
+            <NavBar/>
            <Switch> 
                 <Route exact path="/">
                     <App/>
