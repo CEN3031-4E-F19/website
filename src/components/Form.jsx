@@ -29,7 +29,7 @@ class Form extends Component {
     }
 
     handleSubmit(event){
-        
+        event.preventDefault();
         //console.log(this.state);
         const { clientName, clientEmail, clientHouseAge, clientAddress, problemDesc, clientQuestion } = this.state;
         let message = {
@@ -48,13 +48,15 @@ class Form extends Component {
 
             
         }
-        console.log(templateParams);
+        //console.log(templateParams);
+        /*
         emailjs.send(
              'spencer_gmail',
              'template_XadAOTCZ',
               templateParams,
              'user_M6kLPVJil1znauH2TGfwg'
         );
+        */
         let clientObject = {
             
             clientName: clientName, 
@@ -64,15 +66,14 @@ class Form extends Component {
             problemDesc: problemDesc, 
             clientQuestion: clientQuestion
         }
-
-        axios.post('http://localhost:5000/api/clientFormSubmit', clientObject)
-            .then((res) => {
-                console.log(res.data);
-                alert(res.data);
+        console.log(clientObject);
+        axios.post('api/clientFormSubmit', clientObject)
+            .then((req, res) => {
+                console.log('response', req);
             });
 
-        event.reset();
-        event.preventDefault();
+        //event.reset();
+        
         
     }
     

@@ -4,6 +4,7 @@ const path = require('path'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     router = require('../routes/client.server.routes.js');
+    cors = require('cors');
 
 module.exports.init = () => {
     /* 
@@ -27,6 +28,15 @@ module.exports.init = () => {
 
     // add a router
     app.use('/api', router);
+
+    const corsOptions = {
+        origin: '*'
+    }
+
+    app.use(cors(corsOptions));
+
+
+    
 
     if (process.env.NODE_ENV === 'production') {
         // Serve any static files
