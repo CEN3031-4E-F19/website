@@ -29,7 +29,7 @@ class Form extends Component {
     }
 
     handleSubmit(event){
-        event.preventDefault();
+        
         //console.log(this.state);
         const { clientName, clientEmail, clientHouseAge, clientAddress, problemDesc, clientQuestion } = this.state;
         let message = {
@@ -71,8 +71,9 @@ class Form extends Component {
             .then((req, res) => {
                 console.log('response', req);
             });
-
-        //event.reset();
+        
+        event.preventDefault();
+        event.reset();
         
         
     }
