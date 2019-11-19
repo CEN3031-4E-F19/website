@@ -102,7 +102,13 @@ class Form extends Component {
                 <div className="form-group">
                     <label>
                         House Age:
-                        <input id="houseAge" name="clientHouseAge" type="text" className="form-control" onChange={this.handleChange}/>
+                        {/* This code is different from the other form inputs 
+                            as it was rewritten to only allow number inputs.
+                            It is based on an example from
+                            https://stackoverflow.com/a/47900329 */}
+                        <input id="houseAge" name="clientHouseAge" type="text" className="form-control" 
+                        value = {this.state.clientHouseAge}
+                        onChange={event => this.setState({clientHouseAge: event.target.value.replace(/\D/,'')})}/>
                     </label>
                 </div>
                 <div className="form-group">
