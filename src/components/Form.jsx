@@ -15,7 +15,7 @@ class Form extends Component {
             knowProb: 'No',
             clientQuestion: '',
             problemDesc: '',
-            clientZip:'',
+            clientZip: '',
             clientCare: '',
             clientPay: '',
             anotherProb: 'No',
@@ -33,16 +33,80 @@ class Form extends Component {
                 clientPay: '',
                 anotherProb: '',
                 waterTesting: ''
-            }
+            },
+            clientNameValid: '',
+            clientEmailValid: '',
+            clientHouseAgeValid: '',
+            clientAddressValid: '',
+            clientKnowProbValid: '',
+            clientQuestionValid: '',
+            clientProblemDescValid: '',
+            clientZipValid: '',
+            clientCareValid: '',
+            clientPayValid: '',
+            anotherProbValid: '',
+            waterTestValid: ''
           };
         this.handleChange=this.handleChange.bind(this);
         this.handleSubmit=this.handleSubmit.bind(this);
     }
 
+    validateField(fieldName, value) {
+        let fieldValidationErrors = this.state.formErrors;
+        let clientNameValid = this.state.clientNameValid;
+        let clientEmailValid = this.state.clientEmailValid;
+        let clientHouseAgeValid = this.state.clientHouseAgeValid;
+        let clientAddressValid = this.state.clientAddressValid;
+        let clientKnowProbValid = this.state.clientKnowProbValid;
+        let clientQuestionValid = this.state.clientQuestion;
+        let clientProblemDescValid = this.state.clientProblemDescValid;
+        let clientZipValid = this.state.clientZipValid;
+        let clientCareValid = this.state.clientCareValid;
+        let clientPayValid = this.state.clientPayValid;
+        let anotherProbValid = this.state.anotherProbValid;
+        let waterTestValid = this.state.waterTestValid;
+
+        switch(fieldName) {
+            case 'clientName': {
+                clientNameValid = value.length > 0;
+                fieldValidationErrors.clientEmail = clientNameValid ? '' : 'Please provide a name';
+                break;
+            }
+            case 'clientEmail': {
+                clientEmailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+                fieldValidationErrors.clientEmail = clientEmailValid ? '' : 'Email is invalid';
+                break;
+            }
+            case 'clientHouseAge': {
+                clientHouseAgeValid = value.length > 0;
+                fieldValidationErrors.clientHouseAge = clientHouseAgeValid ? '' : 'Please provide a house age';
+                break;
+            }
+            case 'clientAddress': {
+                clientAddressValid = value.length > 0;
+                fieldValidationErrors.clientHouseAddress = clientAddressValid ? '' : 'Please provide a home address';
+                break;
+            }
+            case 'clientZip': {
+                clientZipValid = value.length === 5;
+                fieldValidationErrors.clientZip = clientZipValid ? '' : 'Please enter a valid zip code';
+                break;
+            }
+
+        }
+    }
+
     handleChange(event){
         const value = event.target.value;
         const name = event.target.name;
-        this.setState({[name]:value});
+        this.setState({[name]:value}
+            //,
+            /*
+            () => {
+                this.validateField(name, value);
+            }
+            */
+        );
 
     }
 
