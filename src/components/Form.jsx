@@ -19,7 +19,21 @@ class Form extends Component {
             clientCare:'',
             clientPay:'',
             anotherProb:'No',
-            waterTesting:'No'
+            waterTesting:'No',
+            formErrors: {
+                clientName: '',
+                clientEmail: '',
+                clientHouseAge: '',
+                clientAddress: '',
+                knowProb: '',
+                clientQuestion: '',
+                problemDesc: '',
+                clientZip:'',
+                clientCare:'',
+                clientPay:'',
+                anotherProb:'',
+                waterTesting:''
+            }
           };
         this.handleChange=this.handleChange.bind(this);
         this.handleSubmit=this.handleSubmit.bind(this);
