@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import * as emailjs from 'emailjs-com'
+import * as emailjs from 'emailjs-com';
 import { template } from '@babel/core';
 import { throwStatement, restElement } from '@babel/types';
+import axios from 'axios';
 
 class Form extends Component {
     constructor(props) {
@@ -47,21 +48,39 @@ class Form extends Component {
 
             
         }
-        console.log(templateParams);
+        //console.log(templateParams);
+        /*
         emailjs.send(
              'spencer_gmail',
              'template_XadAOTCZ',
               templateParams,
              'user_M6kLPVJil1znauH2TGfwg'
         );
-        event.reset();
+        */
+        let clientObject = {
+            
+            clientName: clientName, 
+            clientEmail: clientEmail, 
+            clientHouseAge: clientHouseAge, 
+            clientAddress: clientAddress, 
+            problemDesc: problemDesc, 
+            clientQuestion: clientQuestion
+        }
+        console.log(clientObject);
+        axios.post('api/clientFormSubmit', clientObject)
+            .then((req, res) => {
+                console.log('response', req);
+            });
+        
         event.preventDefault();
+        event.reset();
+        
         
     }
     
     render() { 
         return (
-            <form id="contactForm" onSubmit={this.handleSubmit}>
+            <form className="text-center" id="contactForm" onSubmit={this.handleSubmit} >
                 <div className="form-group">
                     <label>
                         Name:
@@ -83,7 +102,13 @@ class Form extends Component {
                 <div className="form-group">
                     <label>
                         House Age:
-                        <input id="houseAge" name="clientHouseAge" type="text" className="form-control" onChange={this.handleChange}/>
+                        {/* This code is different from the other form inputs 
+                            as it was rewritten to only allow number inputs.
+                            It is based on an example from
+                            https://stackoverflow.com/a/47900329 */}
+                        <input id="houseAge" name="clientHouseAge" type="text" className="form-control" 
+                        value = {this.state.clientHouseAge}
+                        onChange={event => this.setState({clientHouseAge: event.target.value.replace(/\D/,'')})}/>
                     </label>
                 </div>
                 <div className="form-group">
