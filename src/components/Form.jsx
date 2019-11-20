@@ -12,10 +12,14 @@ class Form extends Component {
             clientEmail: '',
             clientHouseAge: '',
             clientAddress: '',
-            problem: false,
             knowProb: 'No',
             clientQuestion: '',
-            problemDesc: ''
+            problemDesc: '',
+            clientZip:'',
+            clientCare:'',
+            clientPay:'',
+            anotherProb:'No',
+            waterTesting:'No'
           };
         this.handleChange=this.handleChange.bind(this);
         this.handleSubmit=this.handleSubmit.bind(this);
@@ -84,13 +88,13 @@ class Form extends Component {
                 <div className="form-group">
                     <label>
                         Name:
-                        <input id="name" name="clientName" type="text" className="form-control" onChange={this.handleChange}/>
+                        <input required id="name" name="clientName" type="text" className="form-control" onChange={this.handleChange}/>
                     </label>
                 </div>
                 <div>
                     <label>
                         Email:
-                        <input id="email" name="clientEmail" type ="text" className="form-control" placeholder="name@example.com" onChange={this.handleChange}/>
+                        <input required id="email" name="clientEmail" type ="text" className="form-control" placeholder="name@example.com" onChange={this.handleChange}/>
                     </label>
                 </div>
                 <div className="form-group">
@@ -113,7 +117,7 @@ class Form extends Component {
                 </div>
                 <div className="form-group">
                     <p>
-                        Do you know the problem with your Water?
+                        Do you know the problem with your tap water?
                     </p>
                         <label>
                             No {' '}
@@ -128,6 +132,58 @@ class Form extends Component {
                 <div className="form-group">
                     {this.state.knowProb==="Yes"? <label> Please describe your problem<textarea name ="problemDesc" cols="50" rows="5" className="form-control" row="3" onChange={this.handleChange}/></label>:
                     <span/>}
+                </div>
+                <div className="form-group">
+                    <p>
+                    Are you concerned about any water in your home other than tap water?
+                    </p>
+                        <label>
+                            No {' '}
+                            <input name="anotherProb"type="radio" value="No" defaultChecked onClick={this.handleChange}/>
+                        </label>
+                        <label className ="m-2">
+                            Yes {' '}
+                            <input name="anotherProb" type="radio" value="Yes" onClick={this.handleChange}/>
+                        </label>
+
+                </div>
+                <div className="form-group">
+                    <p>
+                    Are you interested in having your water tested?
+                    </p>
+                        <label>
+                            No {' '}
+                            <input name="waterTesting"type="radio" value="No" defaultChecked onClick={this.handleChange}/>
+                        </label>
+                        <label className ="m-2">
+                            Yes {' '}
+                            <input name="waterTesting" type="radio" value="Yes" onClick={this.handleChange}/>
+                        </label>
+
+                </div>
+                <div className="form-group">
+                <label>
+                    How much do you care about the quality of your tap water?
+                <select name="clientCare" onChange={this.handleChange}>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                </label>
+                </div>
+                <div className="form-group">
+                <label>
+                    What is the maximum you are willing to pay to have your water tested?
+                <select name="clientPay" onChange={this.handleChange}>
+                    <option value="10">$10</option>
+                    <option value="20">$20</option>
+                    <option value="50">$50</option>
+                    <option value="150">$150</option>
+                    <option value="300">$300</option>
+                </select>
+                </label>
                 </div>
                 <div className="form-group">
                     <label>Please upload any relevent information
