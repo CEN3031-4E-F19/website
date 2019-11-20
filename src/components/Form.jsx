@@ -16,10 +16,10 @@ class Form extends Component {
             clientQuestion: '',
             problemDesc: '',
             clientZip:'',
-            clientCare:'',
-            clientPay:'',
-            anotherProb:'No',
-            waterTesting:'No',
+            clientCare: '',
+            clientPay: '',
+            anotherProb: 'No',
+            waterTesting: 'No',
             formErrors: {
                 clientName: '',
                 clientEmail: '',
@@ -28,11 +28,11 @@ class Form extends Component {
                 knowProb: '',
                 clientQuestion: '',
                 problemDesc: '',
-                clientZip:'',
-                clientCare:'',
-                clientPay:'',
-                anotherProb:'',
-                waterTesting:''
+                clientZip: '',
+                clientCare: '',
+                clientPay: '',
+                anotherProb: '',
+                waterTesting: ''
             }
           };
         this.handleChange=this.handleChange.bind(this);
