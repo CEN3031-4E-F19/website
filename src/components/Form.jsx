@@ -17,7 +17,9 @@ class Form extends Component {
             problemDesc: '',
             clientZip:'',
             clientCare:'',
-            clientPay:''
+            clientPay:'',
+            anotherProb:'No',
+            waterTesting:'No'
           };
         this.handleChange=this.handleChange.bind(this);
         this.handleSubmit=this.handleSubmit.bind(this);
@@ -104,13 +106,13 @@ class Form extends Component {
                 <div className="form-group">
                     <label>
                         House Age:
-                        <input  id="houseAge" name="clientHouseAge" type="text" className="form-control" onChange={this.handleChange}/>
-                    </label>
-                </div>
-                <div className="form-group">
-                    <label>
-                        Zip Code:
-                        <input required type="text" className="form-control" name="clientZip" onChange={this.handleChange}/>
+                        {/* This code is different from the other form inputs 
+                            as it was rewritten to only allow number inputs.
+                            It is based on an example from
+                            https://stackoverflow.com/a/47900329 */}
+                        <input id="houseAge" name="clientHouseAge" type="text" className="form-control" 
+                        value = {this.state.clientHouseAge}
+                        onChange={event => this.setState({clientHouseAge: event.target.value.replace(/\D/,'')})}/>
                     </label>
                 </div>
                 <div className="form-group">
@@ -130,6 +132,34 @@ class Form extends Component {
                 <div className="form-group">
                     {this.state.knowProb==="Yes"? <label> Please describe your problem<textarea name ="problemDesc" cols="50" rows="5" className="form-control" row="3" onChange={this.handleChange}/></label>:
                     <span/>}
+                </div>
+                <div className="form-group">
+                    <p>
+                    Are you concerned about any water in your home other than tap water?
+                    </p>
+                        <label>
+                            No {' '}
+                            <input name="anotherProb"type="radio" value="No" defaultChecked onClick={this.handleChange}/>
+                        </label>
+                        <label className ="m-2">
+                            Yes {' '}
+                            <input name="anotherProb" type="radio" value="Yes" onClick={this.handleChange}/>
+                        </label>
+
+                </div>
+                <div className="form-group">
+                    <p>
+                    Are you interested in having your water tested?
+                    </p>
+                        <label>
+                            No {' '}
+                            <input name="waterTesting"type="radio" value="No" defaultChecked onClick={this.handleChange}/>
+                        </label>
+                        <label className ="m-2">
+                            Yes {' '}
+                            <input name="waterTesting" type="radio" value="Yes" onClick={this.handleChange}/>
+                        </label>
+
                 </div>
                 <div className="form-group">
                 <label>
