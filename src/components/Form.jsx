@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as emailjs from 'emailjs-com';
 import { template } from '@babel/core';
 import { throwStatement, restElement } from '@babel/types';
+import FormError from './FormError';
 import axios from 'axios';
 
 class Form extends Component {
@@ -92,20 +93,35 @@ class Form extends Component {
                 fieldValidationErrors.clientZip = clientZipValid ? '' : 'Please enter a valid zip code';
                 break;
             }
-
         }
+        this.setState({
+            formErrors: fieldValidationErrors,
+            clientNameValid: clientNameValid,
+            clientEmailValid: clientEmailValid,
+            clientHouseAgeValid: clientHouseAgeValid,
+            clientAddressValid: clientAddressValid,
+            clientZipValid: clientZipValid
+        }, this.validateForm);
+
+    }
+
+    validateForm() {
+        this.setState({
+            formValid:  this.state.clientNameValid &&
+                        this.state.clientEmailValid &&
+                        this.state.clientAddressValid &&
+                        this.state.clientHouseAgeValid &&
+                        this.state.clientZipValid
+        })
     }
 
     handleChange(event){
         const value = event.target.value;
         const name = event.target.name;
-        this.setState({[name]:value}
-            //,
-            /*
+        this.setState({[name]:value},
             () => {
                 this.validateField(name, value);
             }
-            */
         );
 
     }
@@ -163,6 +179,9 @@ class Form extends Component {
     render() { 
         return (
             <form className="text-center" id="contactForm" onSubmit={this.handleSubmit} >
+                <div className="panel panel-default">
+                    <FormError formErrors={this.state.formErrors}/>
+                </div>
                 <div className="form-group">
                     <label>
                         Name:
@@ -276,7 +295,7 @@ class Form extends Component {
                     </label>
                 </div>
 
-                <button className="btn btn-primary">submit</button>
+                <button className="btn btn-primary" disabled={!this.state.formValid}>submit</button>
             </form>
 
 

@@ -18,7 +18,6 @@ class App extends Component {
                         <Home/>
                   </Route>
                   <Route path="/Contact">
-                        <FormError formErrors={this.state.formErrors}/>
                         <Form/>
                   </Route>
                   <Route>
