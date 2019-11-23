@@ -66,7 +66,7 @@ class Form extends Component {
         let clientPayValid = this.state.clientPayValid;
         let anotherProbValid = this.state.anotherProbValid;
         let waterTestValid = this.state.waterTestValid;
-
+        console.log('fieldName', fieldName);
         switch(fieldName) {
             case 'clientName': {
                 clientNameValid = value.length > 0;
@@ -81,6 +81,7 @@ class Form extends Component {
                 break;
             }
             case 'clientHouseAge': {
+                console.log('house age length', value.length);
                 clientHouseAgeValid = value.length > 0;
                 fieldValidationErrors.clientHouseAge = clientHouseAgeValid ? '' : 'Please provide a house age';
                 break;
@@ -113,8 +114,7 @@ class Form extends Component {
             formValid:  this.state.clientNameValid &&
                         this.state.clientEmailValid &&
                         this.state.clientAddressValid &&
-                        this.state.clientHouseAgeValid &&
-                        this.state.clientZipValid
+                        this.state.clientHouseAgeValid
         })
         console.log('formValid after', this.state.formValid);
     }
@@ -219,7 +219,26 @@ class Form extends Component {
                             https://stackoverflow.com/a/47900329 */}
                         <input id="houseAge" name="clientHouseAge" type="text" className="form-control" 
                         value = {this.state.clientHouseAge}
-                        onChange={event => this.setState({clientHouseAge: event.target.value.replace(/\D/,'')})}/>
+                        onChange={  
+                            /*
+                            () => {
+                                    (event) => {
+                                        this.setState(
+                                            {
+                                            clientHouseAge: event.target.value.replace(/\D/,'')
+                                            }
+                                        )  
+                                    };
+                                    
+
+                                }
+                                */
+                                this.handleChange
+                                    
+                                    
+
+                                }
+                        />
                     </label>
                 </div>
                 <div className="form-group">
