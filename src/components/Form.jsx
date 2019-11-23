@@ -70,11 +70,13 @@ class Form extends Component {
         switch(fieldName) {
             case 'clientName': {
                 clientNameValid = value.length > 0;
-                fieldValidationErrors.clientEmail = clientNameValid ? '' : 'Please provide a name';
+                console.log('clientNameValid: ', clientNameValid);
+                fieldValidationErrors.clientName = clientNameValid ? '' : 'Please provide a name';
                 break;
             }
             case 'clientEmail': {
-                clientEmailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+                clientEmailValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
+                console.log('clientEmailValid: ', clientEmailValid);
                 fieldValidationErrors.clientEmail = clientEmailValid ? '' : 'Email is invalid';
                 break;
             }
@@ -106,6 +108,7 @@ class Form extends Component {
     }
 
     validateForm() {
+        console.log('formValid before', this.state.formValid);
         this.setState({
             formValid:  this.state.clientNameValid &&
                         this.state.clientEmailValid &&
@@ -113,6 +116,7 @@ class Form extends Component {
                         this.state.clientHouseAgeValid &&
                         this.state.clientZipValid
         })
+        console.log('formValid after', this.state.formValid);
     }
 
     handleChange(event){
@@ -121,13 +125,14 @@ class Form extends Component {
         this.setState({[name]:value},
             () => {
                 this.validateField(name, value);
+                console.log(this.state);
             }
         );
 
     }
 
     handleSubmit(event){
-        
+        event.preventDefault();
         //console.log(this.state);
         const { clientName, clientEmail, clientHouseAge, clientAddress, problemDesc, clientQuestion } = this.state;
         let message = {
@@ -170,12 +175,16 @@ class Form extends Component {
                 console.log('response', req);
             });
         
-        event.preventDefault();
-        event.reset();
+        //event.preventDefault();
+        //event.reset();
         
         
     }
     
+    errorClass(error) {
+        return(error.length === 0 ? '' : 'has-error');
+    }
+
     render() { 
         return (
             <form className="text-center" id="contactForm" onSubmit={this.handleSubmit} >
@@ -188,7 +197,8 @@ class Form extends Component {
                         <input required id="name" name="clientName" type="text" className="form-control" onChange={this.handleChange}/>
                     </label>
                 </div>
-                <div>
+                {/*<div className={"form-group" + this.errorClass(this.state.formErrors.clientEmail)}> */}
+                <div className="form-group">
                     <label>
                         Email:
                         <input required id="email" name="clientEmail" type ="text" className="form-control" placeholder="name@example.com" onChange={this.handleChange}/>
