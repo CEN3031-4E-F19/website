@@ -1,7 +1,8 @@
 var client = require('../controllers/client.server.controller.js')
     express = require('express')
     cheerio = require('cheerio')
-    axios = require('axios')
+    request = require('request')
+   
     router = express.Router();
 
 
@@ -37,13 +38,27 @@ router.post('/clientFormSubmit', (req, res) => {
   })
 })
 
+
+
 router.get('/articleScrape', (req,res)=>{
 
-const pacInstUrl = 'https://pacinst.org/media-news/page/';
+const pacInstUrl = 'https://pacinst.org/media-news/page/1';
 
-axios.get(pacInstUrl)
-.then(response=>console.log(response))
-.catch(error=>console.log(error))
+request(pacInstUrl,function(err,response,html){
+  if(err) console.log(err);
+
+  var $ = cheerio.load(html);
+
+  $('div.excerpt-wrap').each(function(i,element){
+    //title
+    console.log($(this).find('.default-ex-title').text());
+    //description
+    console.log($(this).find('.entry-summary').text());
+    //link
+    console.log($(this).find('.news-ex-link').find('a').attr('href'));
+  })
+
+})
 
 
 
