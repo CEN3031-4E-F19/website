@@ -41,7 +41,7 @@ router.post('/clientFormSubmit', (req, res) => {
 
 
 router.get('/articleScrape', (req,res)=>{
-
+  var data = [];
 const pacInstUrl = 'https://pacinst.org/media-news/page/1';
 
 request(pacInstUrl,function(err,response,html){
@@ -50,13 +50,17 @@ request(pacInstUrl,function(err,response,html){
   var $ = cheerio.load(html);
 
   $('div.excerpt-wrap').each(function(i,element){
+    
+    data.push({
     //title
-    console.log($(this).find('.default-ex-title').text());
+    title:$(this).find('.default-ex-title').text(),
     //description
-    console.log($(this).find('.entry-summary').text());
+    desc:$(this).find('.entry-summary').text().trim(),
     //link
-    console.log($(this).find('.news-ex-link').find('a').attr('href'));
-  })
+    link:$(this).find('.news-ex-link').find('a').attr('href')
+    });
+  });
+  res.send(data);
 
 })
 
