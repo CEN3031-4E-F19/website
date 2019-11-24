@@ -13,7 +13,18 @@ class Article extends Component {
         });
     }
     render() { 
-        return ( <h1>news article</h1> );
+        console.log(this.state);
+        const articleList = this.state.data.map((article,i)=>{
+            return(
+            <tr key={i}>
+                <a href={article.link}>
+                <td>{article.title}</td>
+                <td>{article.desc}</td>
+                </a>
+            </tr>
+            );
+        });
+        return ( <div>{articleList}</div>);
     }
 }
  
