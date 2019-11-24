@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import Article from './Article';
 
 
 class News extends Component {
@@ -8,8 +8,7 @@ class News extends Component {
         this.state = {  }
     }
     render() { 
-        axios.get('api/articleScrape');
-        return ( <h1>News Site</h1>  );
+        return ( <Article/>);
     }
 }
  
