@@ -8,7 +8,14 @@ class News extends Component {
         this.state = {  }
     }
     render() { 
-        return ( <Article/>);
+        return ( 
+            <div>
+                <div>
+                <h2 className='text-center'>News</h2>
+                </div>
+                <Article/>
+            </div>
+            );
     }
 }
  
