@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Card from 'react-bootstrap/Card'
 import axios from 'axios';
 
 
@@ -17,10 +18,12 @@ class Article extends Component {
         const articleList = this.state.data.map((article,i)=>{
             return(
             <tr key={i}>
+                <Card style = {{width: '25rem'}}>
                 <a target='_blank' href={article.link}>
-                <td>{article.title}</td>
-                <td>{article.desc}</td>
+                <Card.Title>{article.title}</Card.Title>
+                <Card.Body>{article.desc}</Card.Body>
                 </a>
+                </Card>
             </tr>
             );
         });
