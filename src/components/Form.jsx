@@ -54,18 +54,6 @@ class Form extends Component {
 
     validateField(fieldName, value) {
         let fieldValidationErrors = this.state.formErrors;
-        let clientNameValid = this.state.clientNameValid;
-        let clientEmailValid = this.state.clientEmailValid;
-        let clientHouseAgeValid = this.state.clientHouseAgeValid;
-        let clientAddressValid = this.state.clientAddressValid;
-        let clientKnowProbValid = this.state.clientKnowProbValid;
-        let clientQuestionValid = this.state.clientQuestion;
-        let clientProblemDescValid = this.state.clientProblemDescValid;
-        let clientZipValid = this.state.clientZipValid;
-        let clientCareValid = this.state.clientCareValid;
-        let clientPayValid = this.state.clientPayValid;
-        let anotherProbValid = this.state.anotherProbValid;
-        let waterTestValid = this.state.waterTestValid;
 
         switch(fieldName) {
             case 'clientName': {
