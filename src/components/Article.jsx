@@ -18,7 +18,7 @@ class Article extends Component {
         const articleList = this.state.data.map((article,i)=>{
             return(
             <tr key={i}>
-                <Card style = {{width: '25rem'}}>
+                <Card style = {{width: '25rem'}} className="shadow-sm p-3 mb-2 bg-white rounded" >
                 <a target='_blank' href={article.link}>
                 <Card.Title>{article.title}</Card.Title>
                 <Card.Body>{article.desc}</Card.Body>
