@@ -69,38 +69,38 @@ class Form extends Component {
 
         switch(fieldName) {
             case 'clientName': {
-                clientNameValid = value.length > 0;
-                fieldValidationErrors.clientName = clientNameValid ? '' : 'Please provide a name';
+                this.state.clientNameValid = value.length > 0;
+                fieldValidationErrors.clientName = this.state.clientNameValid ? '' : 'Please provide a name';
                 break;
             }
             case 'clientEmail': {
-                clientEmailValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
-                fieldValidationErrors.clientEmail = clientEmailValid ? '' : 'Email is invalid';
+                this.state.clientEmailValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
+                fieldValidationErrors.clientEmail = this.state.clientEmailValid ? '' : 'Email is invalid';
                 break;
             }
             case 'clientHouseAge': {
-                clientHouseAgeValid = value.length > 0;
-                fieldValidationErrors.clientHouseAge = clientHouseAgeValid ? '' : 'Please provide a house age';
+                this.state.clientHouseAgeValid = value.length > 0;
+                fieldValidationErrors.clientHouseAge = this.state.clientHouseAgeValid ? '' : 'Please provide a house age';
                 break;
             }
             case 'clientAddress': {
-                clientAddressValid = value.length > 0;
-                fieldValidationErrors.clientHouseAddress = clientAddressValid ? '' : 'Please provide a home address';
+                this.state.clientAddressValid = value.length > 0;
+                fieldValidationErrors.clientHouseAddress = this.state.clientAddressValid ? '' : 'Please provide a home address';
                 break;
             }
             case 'clientZip': {
-                clientZipValid = value.length === 5;
-                fieldValidationErrors.clientZip = clientZipValid ? '' : 'Please enter a valid zip code';
+                this.state.clientZipValid = value.length === 5;
+                fieldValidationErrors.clientZip = this.state.clientZipValid ? '' : 'Please enter a valid zip code';
                 break;
             }
         }
         this.setState({
             formErrors: fieldValidationErrors,
-            clientNameValid: clientNameValid,
-            clientEmailValid: clientEmailValid,
-            clientHouseAgeValid: clientHouseAgeValid,
-            clientAddressValid: clientAddressValid,
-            clientZipValid: clientZipValid
+            clientNameValid: this.state.clientNameValid,
+            clientEmailValid: this.state.clientEmailValid,
+            clientHouseAgeValid: this.state.clientHouseAgeValid,
+            clientAddressValid: this.state.clientAddressValid,
+            clientZipValid: this.state.clientZipValid
         }, this.validateForm);
 
     }
@@ -127,7 +127,17 @@ class Form extends Component {
 
     handleSubmit(event){
         event.preventDefault();
-        const { clientName, clientEmail, clientHouseAge, clientAddress, problemDesc, clientQuestion } = this.state;
+        const { clientName, 
+                clientEmail, 
+                clientHouseAge, 
+                clientAddress, 
+                problemDesc, 
+                clientQuestion,
+                clientCare,
+                clientPay,
+                anotherProb,
+                waterTesting
+             } = this.state;
         let message = {
             clientHouseAge,
             clientAddress
@@ -157,15 +167,19 @@ class Form extends Component {
             
             clientName: clientName, 
             clientEmail: clientEmail, 
-            clientHouseAge: clientHouseAge, 
             clientAddress: clientAddress, 
+            clientHouseAge: clientHouseAge, 
             problemDesc: problemDesc, 
-            clientQuestion: clientQuestion
+            clientQuestion: clientQuestion,
+            clientCare: clientCare,
+            clientPay: clientPay,
+            anotherProb: anotherProb,
+            waterTesting: waterTesting
         }
-        console.log(clientObject);
+        //console.log(clientObject);
         axios.post('api/clientFormSubmit', clientObject)
             .then((req, res) => {
-                console.log('response', req);
+                //console.log('response', req);
             });
         
         //event.preventDefault();
@@ -179,13 +193,13 @@ class Form extends Component {
     }
 
     removeNonNums(event) {
-        console.log('houseAge before: ', event.target.value);
+        //console.log('houseAge before: ', event.target.value);
         this.setState(
             {
                 clientHouseAge: event.target.value.replace(/\D/,'')
             }
         )  
-        console.log(this.state);
+        //console.log(this.state);
     }
 
     render() { 
