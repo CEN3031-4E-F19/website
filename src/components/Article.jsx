@@ -17,7 +17,7 @@ class Article extends Component {
         const articleList = this.state.data.map((article,i)=>{
             return(
             <tr key={i}>
-                <a href={article.link}>
+                <a target='_blank' href={article.link}>
                 <td>{article.title}</td>
                 <td>{article.desc}</td>
                 </a>
