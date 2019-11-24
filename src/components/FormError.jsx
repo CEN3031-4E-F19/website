@@ -4,18 +4,18 @@ import React, { Component } from 'react';
 const FormError = ({formErrors}) => {
     return (
         <div className='formErrors'>
-        {Object.keys(formErrors).map((fieldName, i) => {
-            if(formErrors[fieldName].length > 0){
-                return (
-                /*
-                <p key={i}>{fieldName} {formErrors[fieldName]}</p>
-                */
-                <p key={i}>{formErrors[fieldName]}</p>
-                )        
-            } else {
-                return '';
-            }
-        })}
+            {Object.keys(formErrors).map((fieldName, i) => {
+                if(formErrors[fieldName].length > 0){
+                    return (
+                        /*
+                        <p key={i}>{fieldName} {formErrors[fieldName]}</p>
+                        */
+                        <li key={i} className="text-danger">{formErrors[fieldName]}</li>
+                    )        
+                } else {
+                    return '';
+                }
+            })}
         </div>
     );
 }

@@ -66,22 +66,19 @@ class Form extends Component {
         let clientPayValid = this.state.clientPayValid;
         let anotherProbValid = this.state.anotherProbValid;
         let waterTestValid = this.state.waterTestValid;
-        console.log('fieldName', fieldName);
+
         switch(fieldName) {
             case 'clientName': {
                 clientNameValid = value.length > 0;
-                console.log('clientNameValid: ', clientNameValid);
                 fieldValidationErrors.clientName = clientNameValid ? '' : 'Please provide a name';
                 break;
             }
             case 'clientEmail': {
                 clientEmailValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
-                console.log('clientEmailValid: ', clientEmailValid);
                 fieldValidationErrors.clientEmail = clientEmailValid ? '' : 'Email is invalid';
                 break;
             }
             case 'clientHouseAge': {
-                console.log('house age length', value.length);
                 clientHouseAgeValid = value.length > 0;
                 fieldValidationErrors.clientHouseAge = clientHouseAgeValid ? '' : 'Please provide a house age';
                 break;
@@ -109,14 +106,12 @@ class Form extends Component {
     }
 
     validateForm() {
-        console.log('formValid before', this.state.formValid);
         this.setState({
             formValid:  this.state.clientNameValid &&
                         this.state.clientEmailValid &&
                         this.state.clientAddressValid &&
                         this.state.clientHouseAgeValid
-        })
-        console.log('formValid after', this.state.formValid);
+        });
     }
 
     handleChange(event){
@@ -125,7 +120,6 @@ class Form extends Component {
         this.setState({[name]:value},
             () => {
                 this.validateField(name, value);
-                console.log(this.state);
             }
         );
 
@@ -133,7 +127,6 @@ class Form extends Component {
 
     handleSubmit(event){
         event.preventDefault();
-        //console.log(this.state);
         const { clientName, clientEmail, clientHouseAge, clientAddress, problemDesc, clientQuestion } = this.state;
         let message = {
             clientHouseAge,
@@ -185,6 +178,16 @@ class Form extends Component {
         return(error.length === 0 ? '' : 'has-error');
     }
 
+    removeNonNums(event) {
+        console.log('houseAge before: ', event.target.value);
+        this.setState(
+            {
+                clientHouseAge: event.target.value.replace(/\D/,'')
+            }
+        )  
+        console.log(this.state);
+    }
+
     render() { 
         return (
             <form className="text-center" id="contactForm" onSubmit={this.handleSubmit} >
@@ -197,11 +200,11 @@ class Form extends Component {
                         <input required id="name" name="clientName" type="text" className="form-control" onChange={this.handleChange}/>
                     </label>
                 </div>
-                {/*<div className={"form-group" + this.errorClass(this.state.formErrors.clientEmail)}> */}
-                <div className="form-group">
+                {/*<div className={'${this.errorClass(this.state.formErrors.clientEmail)'}>*/}
+                <div className="has-error">
                     <label>
                         Email:
-                        <input required id="email" name="clientEmail" type ="text" className="form-control" placeholder="name@example.com" onChange={this.handleChange}/>
+                        <input required id="email" name="clientEmail" type ="text" className="form-control has-error" placeholder="name@example.com" onChange={this.handleChange}/>
                     </label>
                 </div>
                 <div className="form-group">
@@ -219,25 +222,13 @@ class Form extends Component {
                             https://stackoverflow.com/a/47900329 */}
                         <input id="houseAge" name="clientHouseAge" type="text" className="form-control" 
                         value = {this.state.clientHouseAge}
-                        onChange={  
-                            /*
-                            () => {
-                                    (event) => {
-                                        this.setState(
-                                            {
-                                            clientHouseAge: event.target.value.replace(/\D/,'')
-                                            }
-                                        )  
-                                    };
-                                    
-
+                        onChange= {  
+                                (event) =>  {
+                                    this.removeNonNums(event); this.handleChange(event);
                                 }
-                                */
-                                this.handleChange
-                                    
-                                    
-
-                                }
+                                
+                        
+                            }
                         />
                     </label>
                 </div>

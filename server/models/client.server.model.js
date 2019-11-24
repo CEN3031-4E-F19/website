@@ -16,7 +16,11 @@ var clientSchema = new Schema({
   clientHasProblem: Boolean,
   clientKnowsProblem: Boolean,
   clientQuestion: String,
-  clientProblemDesc: String
+  clientProblemDesc: String,
+  clientCare: Boolean,
+  clientPay: Number,
+  anotherProb: Boolean,
+  waterTesting: Boolean
 
 });
 
