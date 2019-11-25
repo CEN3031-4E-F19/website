@@ -238,11 +238,11 @@ class Form extends Component {
                     <p>
                         Do you know the problem with your tap water?
                     </p>
-                        <label>
+                        <label class = 'no'>
                             No {' '}
                             <input name="knowProb"type="radio" value="No" defaultChecked onClick={this.handleChange}/>
                         </label>
-                        <label className ="m-2">
+                        <label class = 'no' >
                             Yes {' '}
                             <input name="knowProb" type="radio" value="Yes" onClick={this.handleChange}/>
                         </label>
@@ -256,11 +256,11 @@ class Form extends Component {
                     <p>
                     Are you concerned about any water in your home other than tap water?
                     </p>
-                        <label>
+                        <label class = 'no'>
                             No {' '}
                             <input name="anotherProb"type="radio" value="No" defaultChecked onClick={this.handleChange}/>
                         </label>
-                        <label className ="m-2">
+                        <label class = 'no'>
                             Yes {' '}
                             <input name="anotherProb" type="radio" value="Yes" onClick={this.handleChange}/>
                         </label>
@@ -270,16 +270,17 @@ class Form extends Component {
                     <p>
                     Are you interested in having your water tested?
                     </p>
-                        <label>
+                        <label class = 'no'>
                             No {' '}
                             <input name="waterTesting"type="radio" value="No" defaultChecked onClick={this.handleChange}/>
                         </label>
-                        <label className ="m-2">
+                        <label class = 'no'>
                             Yes {' '}
                             <input name="waterTesting" type="radio" value="Yes" onClick={this.handleChange}/>
                         </label>
 
                 </div>
+
                 <div className="form-group">
                 <label>
                     How much do you care about the quality of your tap water?
@@ -292,6 +293,7 @@ class Form extends Component {
                 </select>
                 </label>
                 </div>
+
                 <div className="form-group">
                 <label>
                     What is the maximum you are willing to pay to have your water tested?
@@ -304,20 +306,22 @@ class Form extends Component {
                 </select>
                 </label>
                 </div>
+
                 <div className="form-group">
                     <label>Please upload any relevent information
                         <input type="file" className="form-control-file"/>                        
                     </label>
 
                 </div>
+
                 <div className="form-group">
-                    <label>
+                    <label class = 'questions'>
                         Questions:
-                        <textarea id="question" name="clientQuestion" cols="50" rows="5" className="form-control" onChange={this.handleChange}></textarea>
+                        <textarea id="question" name="clientQuestion" className="form-control" onChange={this.handleChange}></textarea>
                     </label>
                 </div>
 
-                <button className="btn btn-primary" disabled={!this.state.formValid}>submit</button>
+                <button className="btn btn-success" disabled={!this.state.formValid}>submit</button>
             </form>
 
 
