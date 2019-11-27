@@ -67,8 +67,9 @@ class Form extends Component {
                 break;
             }
             case 'clientHouseAge': {
-                this.state.clientHouseAgeValid = value.length > 0;
-                fieldValidationErrors.clientHouseAge = this.state.clientHouseAgeValid ? '' : 'Please provide a house age';
+                this.state.clientHouseAgeValid = !isNaN(value);
+                console.log('isNaN(', value, ') = ', isNaN(value));
+                fieldValidationErrors.clientHouseAge = this.state.clientHouseAgeValid ? '' : 'Please provide a valid house age';
                 break;
             }
             case 'clientAddress': {
