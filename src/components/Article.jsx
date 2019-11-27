@@ -17,15 +17,17 @@ class Article extends Component {
         console.log(this.state);
         const articleList = this.state.data.map((article,i)=>{
             return(
-            <tr key={i}>
-                <Card style = {{width: '25rem'}} className="shadow-sm p-3 mb-2 bg-white rounded" >
+            <div className="row" key={i}>
+                <Card style = {{width: '85rem'}} className="mx-auto shadow-sm p-3 mb-2 bg-white rounded " >
                 <Card.Title>{article.title}</Card.Title>
                 <Card.Body>{article.desc}</Card.Body>
                 <a target='_blank' href={article.link} className="stretched-link"/>
                 </Card>
-            </tr>
+            </div>
             );
         });
+
+
         return ( <div>{articleList}</div>);
     }
 }
