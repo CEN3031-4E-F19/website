@@ -62,7 +62,7 @@ class Form extends Component {
                 break;
             }
             case 'clientEmail': {
-                this.state.clientEmailValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
+                this.state.clientEmailValid = /\S+@\S+\.\S+/.test(value);
                 fieldValidationErrors.clientEmail = this.state.clientEmailValid ? '' : 'Email is invalid';
                 break;
             }
