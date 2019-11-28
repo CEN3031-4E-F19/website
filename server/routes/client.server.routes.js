@@ -1,7 +1,7 @@
 var client = require('../controllers/client.server.controller.js')
     express = require('express')
     cheerio = require('cheerio')
-    request = require('request')
+    axios = require('axios')
    
     router = express.Router();
 
@@ -39,34 +39,32 @@ router.post('/clientFormSubmit', (req, res) => {
 })
 
 
+async function scraper(data,callback){
+  for(var i = 0; i<4; i++){
+    const pacInstUrl = 'https://pacinst.org/media-news/page/'+i;
+    let body = await axios.get(pacInstUrl);
+    var $ = cheerio.load(body.data);
+      $('div.excerpt-wrap').each(function(i,element){
+        data.push({
+        //title
+        title:$(this).find('.default-ex-title').text(),
+        //description
+        desc:$(this).find('.entry-summary').text().trim(),
+        //link
+        link:$(this).find('.news-ex-link').find('a').attr('href')
+        });
+      });
+  }
+  callback();
+}
+
+
 
 router.get('/articleScrape', (req,res)=>{
-  var data = [];
-const pacInstUrl = 'https://pacinst.org/media-news/page/1';
-
-request(pacInstUrl,function(err,response,html){
-  if(err) console.log(err);
-
-  var $ = cheerio.load(html);
-
-  $('div.excerpt-wrap').each(function(i,element){
-    
-    data.push({
-    //title
-    title:$(this).find('.default-ex-title').text(),
-    //description
-    desc:$(this).find('.entry-summary').text().trim(),
-    //link
-    link:$(this).find('.news-ex-link').find('a').attr('href')
-    });
-  });
+  data = [];
+scraper(data,()=>{
   res.send(data);
-
-})
-
-
-
-
+});
 
 })
   
