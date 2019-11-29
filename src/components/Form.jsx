@@ -68,7 +68,6 @@ class Form extends Component {
             }
             case 'clientHouseAge': {
                 this.state.clientHouseAgeValid = !isNaN(value);
-                console.log('isNaN(', value, ') = ', isNaN(value));
                 fieldValidationErrors.clientHouseAge = this.state.clientHouseAgeValid ? '' : 'Please provide a valid house age';
                 break;
             }
@@ -78,7 +77,7 @@ class Form extends Component {
                 break;
             }
             case 'clientZip': {
-                this.state.clientZipValid = value.length === 5;
+                this.state.clientZipValid = !isNaN(value);
                 fieldValidationErrors.clientZip = this.state.clientZipValid ? '' : 'Please enter a valid zip code';
                 break;
             }
