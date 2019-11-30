@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import * as emailjs from 'emailjs-com';
+import { template } from '@babel/core';
+import { throwStatement, restElement } from '@babel/types';
+import axios from 'axios';
 
 class Form extends Component {
     constructor(props) {
@@ -14,6 +18,7 @@ class Form extends Component {
             problemDesc: ''
           };
         this.handleChange=this.handleChange.bind(this);
+        this.handleSubmit=this.handleSubmit.bind(this);
     }
 
     handleChange(event){
@@ -24,35 +29,86 @@ class Form extends Component {
     }
 
     handleSubmit(event){
-        console.log(this.state);
+        
+        //console.log(this.state);
+        const { clientName, clientEmail, clientHouseAge, clientAddress, problemDesc, clientQuestion } = this.state;
+        let message = {
+            clientHouseAge,
+            clientAddress
+        }
+        let templateParams = {
+            from_name: clientName,
+            to_name: 'spencer.comora@gmail.com',
+            message_html:   'Client name:\t'+ clientName + '\n'
+                            + 'Client email:\t' + clientEmail + '\n'
+                            + 'Client address:\t' + clientAddress + '\n'
+                            + 'Client house age:\t' + clientHouseAge + '\n'
+                            + 'Client problem description:\t' + problemDesc + '\n'
+                            + 'Client question:\t' + clientQuestion
+
+            
+        }
+        //console.log(templateParams);
+        /*
+        emailjs.send(
+             'spencer_gmail',
+             'template_XadAOTCZ',
+              templateParams,
+             'user_M6kLPVJil1znauH2TGfwg'
+        );
+        */
+        let clientObject = {
+            
+            clientName: clientName, 
+            clientEmail: clientEmail, 
+            clientHouseAge: clientHouseAge, 
+            clientAddress: clientAddress, 
+            problemDesc: problemDesc, 
+            clientQuestion: clientQuestion
+        }
+        console.log(clientObject);
+        axios.post('api/clientFormSubmit', clientObject)
+            .then((req, res) => {
+                console.log('response', req);
+            });
+        
         event.preventDefault();
+        event.reset();
+        
+        
     }
     
     render() { 
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form className="text-center" id="contactForm" onSubmit={this.handleSubmit} >
                 <div className="form-group">
                     <label>
                         Name:
-                        <input id="name" name="clientName" type="text" onChange={this.handleChange}/>
+                        <input id="name" name="clientName" type="text" className="form-control" onChange={this.handleChange}/>
                     </label>
                 </div>
                 <div>
                     <label>
                         Email:
-                        <input id="email" name="clientEmail" type ="text" onChange={this.handleChange}/>
+                        <input id="email" name="clientEmail" type ="text" className="form-control" placeholder="name@example.com" onChange={this.handleChange}/>
                     </label>
                 </div>
                 <div className="form-group">
                     <label>
                         Address:
-                        <input id="address" name="clientAddress" type="text" onChange={this.handleChange}/>
+                        <input id="address" name="clientAddress" className="form-control"type="text" onChange={this.handleChange}/>
                     </label>
                 </div>
                 <div className="form-group">
                     <label>
                         House Age:
-                        <input id="houseAge" name="clientHouseAge" type="text" onChange={this.handleChange}/>
+                        {/* This code is different from the other form inputs 
+                            as it was rewritten to only allow number inputs.
+                            It is based on an example from
+                            https://stackoverflow.com/a/47900329 */}
+                        <input id="houseAge" name="clientHouseAge" type="text" className="form-control" 
+                        value = {this.state.clientHouseAge}
+                        onChange={event => this.setState({clientHouseAge: event.target.value.replace(/\D/,'')})}/>
                     </label>
                 </div>
                 <div className="form-group">
@@ -70,23 +126,23 @@ class Form extends Component {
 
                 </div>
                 <div className="form-group">
-                    {this.state.knowProb==="Yes"? <label> Please describe your problem<input name ="problemDesc"type="text" onChange={this.handleChange}/></label>:
+                    {this.state.knowProb==="Yes"? <label> Please describe your problem<textarea name ="problemDesc" cols="50" rows="5" className="form-control" row="3" onChange={this.handleChange}/></label>:
                     <span/>}
                 </div>
                 <div className="form-group">
                     <label>Please upload any relevent information
-                        <input type="file"/>                        
+                        <input type="file" className="form-control-file"/>                        
                     </label>
 
                 </div>
                 <div className="form-group">
                     <label>
                         Questions:
-                        <input id="question" name="clientQuestion" type="text" onChange={this.handleChange}></input>
+                        <textarea id="question" name="clientQuestion" cols="50" rows="5" className="form-control" onChange={this.handleChange}></textarea>
                     </label>
                 </div>
 
-                <button>submit</button>
+                <button className="btn btn-primary">submit</button>
             </form>
 
 
