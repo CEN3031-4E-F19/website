@@ -33,3 +33,9 @@ var mongoose = require('mongoose')
             res.send("Succesfully Scraped Pacific Institute")
         })
     }
+
+    exports.getAllArticles=function(req,res){
+        Article.find({},(err,articles)=>{
+            res.send(articles)
+        })
+    }
