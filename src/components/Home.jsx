@@ -9,7 +9,7 @@ import pipe1 from "./pipe.1.png"
 function Home() {
   return (
     <div className="text-center">
-     
+      <div class="company">NiekAab Desal</div>
       <img className="waterHand" src={water}  />
 
       <div class="bottom-left">Innovative solutions for clean water strategies</div>
