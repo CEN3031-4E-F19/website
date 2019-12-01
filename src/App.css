@@ -24,3 +24,39 @@
 .App-link {
   color: #09d3ac;
 }
+
+p {
+  color: #0a0a0a
+}
+
+label {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  text-align: center;
+  width: 300px;
+  line-height: 26px;
+  margin-bottom: 10px;
+}
+
+.no {
+  text-align: center;
+  width: 100px;
+}
+
+.noo{
+  width: 100px;
+  text-align: center;
+}
+
+select {
+  width: 100%;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+}
+
+.questions {
+  width: 30%;
+}
