@@ -5,6 +5,8 @@ import { throwStatement, restElement } from '@babel/types';
 import FormError from './FormError';
 import axios from 'axios';
 
+//counter to count the number of submissions in one week
+var numSubmissions = 0;
 class Form extends Component {
     constructor(props) {
         super(props);
@@ -115,6 +117,8 @@ class Form extends Component {
 
     handleSubmit(event){
         event.preventDefault();
+        //there's a new submission, so increment numSubmissions
+        numSubmissions++;
         const { clientName, 
                 clientEmail, 
                 clientHouseAge, 
@@ -126,10 +130,8 @@ class Form extends Component {
                 anotherProb,
                 waterTesting
              } = this.state;
-        let message = {
-            clientHouseAge,
-            clientAddress
-        }
+        
+        /*
         let templateParams = {
             from_name: clientName,
             to_name: 'spencer.comora@gmail.com',
@@ -142,15 +144,31 @@ class Form extends Component {
 
             
         }
-        //console.log(templateParams);
-        /*
-        emailjs.send(
-             'spencer_gmail',
-             'template_XadAOTCZ',
-              templateParams,
-             'user_M6kLPVJil1znauH2TGfwg'
-        );
         */
+
+        let templateParams = {
+            from_name: 'University of Florida CEN3031',
+            to_name: 'spencer.comora@gmail.com',
+            message_html: 'You have received ' + numSubmissions + ' new submissions since last Friday.'
+        };
+        
+        var date = new Date();
+        //if it's a friday, send out the number of submissions since last friday
+        if(date.getDay() == 0) {
+            console.log('IT\'S A SUDAY');
+            //console.log(templateParams);
+            /*
+            emailjs.send(
+                'spencer_gmail',
+                'template_XadAOTCZ',
+                templateParams,
+                'user_M6kLPVJil1znauH2TGfwg'
+            );
+            */
+            //reset numSubmissions
+            numSubmissions = 0;
+        }
+        
         let clientObject = {
             
             clientName: clientName, 
