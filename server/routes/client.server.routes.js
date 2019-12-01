@@ -1,7 +1,8 @@
 var client = require('../controllers/client.server.controller.js')
+    Article = require('../models/article.server.model')
+    mongoose = require('mongoose')
     express = require('express')
-    cheerio = require('cheerio')
-    axios = require('axios')
+    articleController = require('../controllers/article.server.controller')
    
     router = express.Router();
 
@@ -39,33 +40,10 @@ router.post('/clientFormSubmit', (req, res) => {
 })
 
 
-async function scraper(data,callback){
-  for(var i = 0; i<4; i++){
-    const pacInstUrl = 'https://pacinst.org/media-news/page/'+i;
-    let body = await axios.get(pacInstUrl);
-    var $ = cheerio.load(body.data);
-      $('div.excerpt-wrap').each(function(i,element){
-        data.push({
-        //title
-        title:$(this).find('.default-ex-title').text(),
-        //description
-        desc:$(this).find('.entry-summary').text().trim(),
-        //link
-        link:$(this).find('.news-ex-link').find('a').attr('href')
-        });
-      });
-  }
-  callback();
-}
 
 
 
-router.get('/articleScrape', (req,res)=>{
-  data = [];
-scraper(data,()=>{
-  res.send(data);
-});
 
-})
+router.get('/articleScrape', articleController.updateDatabase);
   
 module.exports = router;
