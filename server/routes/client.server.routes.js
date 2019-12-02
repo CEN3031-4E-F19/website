@@ -45,5 +45,8 @@ router.post('/clientFormSubmit', (req, res) => {
     }
   })
 })
+
+router.get('/getArticles',articleController.getAllArticles);
   
 module.exports = router;
+
