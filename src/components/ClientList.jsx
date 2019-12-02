@@ -14,7 +14,7 @@ class ClientList extends Component {
                     <td>{client.clientName}</td>
                     <td>{client.clientEmail}</td>
                     <td>{client.clientAddress}</td>
-                    <button onClick={() => deleteHandler(client.id)}>Delete</button>
+                    <button onClick={() => deleteHandler(client._id)}>Delete</button>
                 </tr>    
             );
         }); 

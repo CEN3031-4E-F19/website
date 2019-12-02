@@ -20,6 +20,25 @@ class AdminPanel extends Component {
         });
     }
 
+    deleteHandler(itemId) {
+        let data = this.state.data;
+        parseInt(itemId);
+        let objIdToDelete = null;
+        this.state.data.forEach((dat) => {
+            if (dat.id == itemId) {
+                objIdToDelete = dat._id;
+            }
+        });
+        axios.delete("/api/clients/" + itemId, {
+            data: {
+                id: objIdToDelete,
+            },
+        });
+        this.setState({
+            data:data.filter(i => i._id !== itemId)
+        })
+    }
+
     render() {
         return (
             <div>
@@ -28,7 +47,7 @@ class AdminPanel extends Component {
                 <div>
                     <table className='table table-striped table-hover'>
                         <tbody>
-                            <ClientList data={this.state.data} filterText={this.state.filterText}/>
+                            <ClientList data={this.state.data} filterText={this.state.filterText} deleteHandler={this.deleteHandler.bind(this)}/>
                         </tbody>
                     </table>
                 </div>
