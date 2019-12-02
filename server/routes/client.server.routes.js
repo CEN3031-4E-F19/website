@@ -1,9 +1,5 @@
 var client = require('../controllers/client.server.controller.js')
-    Article = require('../models/article.server.model')
-    mongoose = require('mongoose')
     express = require('express')
-    articleController = require('../controllers/article.server.controller')
-   
     router = express.Router();
 
 
@@ -49,12 +45,5 @@ router.post('/clientFormSubmit', (req, res) => {
     }
   })
 })
-
-router.delete('/clients/:clientId',client.delete);
-router.get('/clients/:clientId',client.findOne);
-router.get('/clients/',client.findAll);
-
-router.get('/articleScrape', articleController.updateDatabase);
-router.get('/getArticles',articleController.getAllArticles);
-
+  
 module.exports = router;
