@@ -44,10 +44,7 @@ router.post('/clientFormSubmit', (req, res) => {
   })
 })
 
-// router.route('/:clientId')
-//       .get(client.read)
-//       .put(client.update)
-//       .delete(client.delete);
 router.delete('/clients/:clientId',client.delete);
-  
+router.get('/clients/:clientId',client.findOne);
+router.get('/clients/',client.findAll);
 module.exports = router;

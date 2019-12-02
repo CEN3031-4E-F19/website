@@ -16,11 +16,25 @@ exports.create = function(req, res) {
     }
 }
 
-exports.update = function(req, res) {
-    var client = req.client;
-    //replace properties with properties found in req.body
+exports.findAll = function(req, res) {
+    Client.find({}, function(err,client) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(client);
+        }
+    })
+}
 
-    //save
+exports.findOne = function(req, res) {
+    Client.find({_id: req.params.clientId}, function(err, client) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(client);
+        }
+
+    })
 }
 
 exports.delete = function(req, res) {
