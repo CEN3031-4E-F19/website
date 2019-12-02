@@ -107,7 +107,7 @@ class Form extends Component {
     handleChange(event) {
         const value = event.target.value;
         const name = event.target.name;
-        if(name == "clientHouseAge")
+        if((name == "clientZip") || (name == "clientHouseAge"))
         {
             {/* This code is different from the other form inputs
                 as it was rewritten to only allow number inputs.
@@ -238,26 +238,19 @@ class Form extends Component {
                 </div>
                 <div className="form-group">
                     <label>
-                        Zip code:
-                        <input id="zip" name="clientZip" className="form-control" type="text" onChange={this.handleChange}/>
+                        ZIP Code (no dashes):
+                        <input id="zip" name="clientZip" className="form-control" type="text"
+                        value = {this.state.clientZip}
+                        onChange={(event) => {this.handleChange(event)}}
+                        />
                     </label>
                 </div>
                 <div className="form-group">
                     <label>
                         House Age:
-                        {/* This code is different from the other form inputs 
-                            as it was rewritten to only allow number inputs.
-                            It is based on an example from
-                            https://stackoverflow.com/a/47900329 */}
                         <input id="houseAge" name="clientHouseAge" type="text" className="form-control" 
                         value = {this.state.clientHouseAge}
-                        onChange= {  
-                                (event) =>  {
-                                    this.handleChange(event);
-                                }
-                                
-                        
-                            }
+                        onChange= {(event) => {this.handleChange(event)}}
                         />
                     </label>
                 </div>
