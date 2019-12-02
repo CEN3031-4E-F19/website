@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Article from './Article';
 import axios from 'axios';
 import Pagination from 'react-bootstrap/Pagination'
-import PageItem from 'react-bootstrap/PageItem'
 
 class News extends Component {
     constructor(props) {

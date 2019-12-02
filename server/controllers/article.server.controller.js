@@ -4,13 +4,13 @@ var mongoose = require('mongoose')
     axios = require('axios')
 
     async function scraperPacific(callback){
-        for(var i = 0; i<4; i++){
+        for(var i = 1; i<5; i++){
           const pacInstUrl = 'https://pacinst.org/media-news/page/'+i;
           let body = await axios.get(pacInstUrl);
           var $ = cheerio.load(body.data);
             $('div.excerpt-wrap').each(function(i,element){
               var article = new Article();
-              // data.push({
+            
               //title
               article.title=$(this).find('.default-ex-title').text();
               //description
@@ -21,17 +21,45 @@ var mongoose = require('mongoose')
               article.save(err=>{
                 if(err) console.log(err);
               })
-              // });
+              
             });
         }
         callback();
       }
 
+      async function scraperUnWater(callback){
+        for(var i = 1; i<5; i++){
+          const unUrl = 'https://www.unwater.org/news/un-water-news/page/'+i;
+          let body = await axios.get(unUrl);
+          var $ = cheerio.load(body.data);
+            $('article.news-item').each(function(i,element){
+              var article = new Article();
+              //title
+              article.title=$(this).find('h3').find('a').text();
+              //description
+              article.description = $(this).find('p').clone().children().remove().end().text();
+              //link
+              article.link=$(this).find('h3').find('a').attr('href');
+              
+              article.save(err=>{
+                if(err) console.log(err);
+              })
+            
+            });
+        }
+        callback();
+      }
+
+
+
+
+
+
     
     exports.updateDatabase= function(req,res){
-        scraperPacific(()=>{
-            res.send("Succesfully Scraped Pacific Institute")
-        })
+        scraperPacific();
+        scraperUnWater();
+        res.send("Filling Database");
     }
 
     exports.getAllArticles=function(req,res){
