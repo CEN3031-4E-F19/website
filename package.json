@@ -18,6 +18,7 @@
   },
   "scripts": {
     "start": "cd server && npm install && node server.js",
+    "build": "react-scripts build",
     "heroku-postbuild": "cd src && npm install && npm run build"
   },
   "proxy": "http://localhost:5000/",
