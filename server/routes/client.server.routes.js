@@ -43,9 +43,6 @@ router.post('/clientFormSubmit', (req, res) => {
 
 
 
-
-router.get('/articleScrape', articleController.updateDatabase);
-
 router.get('/getArticles',articleController.getAllArticles);
   
 module.exports = router;
