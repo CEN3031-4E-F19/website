@@ -128,8 +128,10 @@ class Form extends Component {
                 clientCare,
                 clientPay,
                 anotherProb,
-                waterTesting
+                waterTesting,
+                clientZip
              } = this.state;
+        console.log(this.state);
         
         /*
         let templateParams = {
@@ -148,25 +150,24 @@ class Form extends Component {
 
         let templateParams = {
             from_name: 'University of Florida CEN3031',
-            to_name: 'spencer.comora@gmail.com',
+            to_name: 'Safa',
             message_html: 'You have received ' + numSubmissions + ' new submissions since last Friday.'
         };
         
         var date = new Date();
         //if it's a friday, send out the number of submissions since last friday
-        if(date.getDay() == 0) {
-            console.log('IT\'S A SUDAY');
-            //console.log(templateParams);
-            /*
+        if(date.getDay() == 5) {
+            console.log(templateParams);
+            
             emailjs.send(
                 'spencer_gmail',
                 'template_XadAOTCZ',
                 templateParams,
                 'user_M6kLPVJil1znauH2TGfwg'
             );
-            */
+            
             //reset numSubmissions
-            numSubmissions = 0;
+            //numSubmissions = 0;
         }
         
         let clientObject = {
@@ -180,7 +181,8 @@ class Form extends Component {
             clientCare: clientCare,
             clientPay: clientPay,
             anotherProb: anotherProb,
-            waterTesting: waterTesting
+            waterTesting: waterTesting,
+            clientZip: clientZip
         }
         //console.log(clientObject);
         axios.post('api/clientFormSubmit', clientObject)
@@ -221,16 +223,22 @@ class Form extends Component {
                     </label>
                 </div>
                 {/*<div className={'${this.errorClass(this.state.formErrors.clientEmail)'}>*/}
-                <div className="has-error">
+                <div className="form-group">
                     <label>
                         Email:
-                        <input required id="email" name="clientEmail" type ="text" className="form-control has-error" placeholder="name@example.com" onChange={this.handleChange}/>
+                        <input required id="email" name="clientEmail" type ="text" className="form-control" placeholder="name@example.com" onChange={this.handleChange}/>
                     </label>
                 </div>
                 <div className="form-group">
                     <label>
                         Address:
-                        <input id="address" name="clientAddress" className="form-control"type="text" onChange={this.handleChange}/>
+                        <input id="address" name="clientAddress" className="form-control" type="text" onChange={this.handleChange}/>
+                    </label>
+                </div>
+                <div className="form-group">
+                    <label>
+                        Zip code:
+                        <input id="zip" name="clientZip" className="form-control" type="text" onChange={this.handleChange}/>
                     </label>
                 </div>
                 <div className="form-group">
