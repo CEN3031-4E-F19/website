@@ -28,7 +28,7 @@ module.exports.init = () => {
 
     //react root
     app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname + "../public/index.html"))
+        res.sendFile(path.join(__dirname + "../../public/index.html"))
     })
 
     // body parsing middleware
