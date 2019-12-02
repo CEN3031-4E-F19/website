@@ -16,10 +16,6 @@ exports.create = function(req, res) {
     }
 }
 
-exports.read = function(req, res) {
-    res.json(req.client);
-}
-
 exports.update = function(req, res) {
     var client = req.client;
     //replace properties with properties found in req.body
@@ -28,13 +24,11 @@ exports.update = function(req, res) {
 }
 
 exports.delete = function(req, res) {
-    var client = req.client;
-    Client.findOneAndDelete({_id: client.id}, function (err) {
+    Client.findOneAndDelete({_id: req.params.clientId}, function (err) {
         if (err) {
             console.log(err);
             res.status(400).send(err);
         } else {
-            res.json(client);
             console.log('Deleted');
         }
     });
