@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './AdminPanel.css';
 import ClientList from './ClientList';
 import Search from './Search';
 import axios from 'axios';
@@ -46,6 +47,11 @@ class AdminPanel extends Component {
                 <Search filterText={this.state.filterText} filterUpdate={this.filterUpdate.bind(this)}/>
                 <div>
                     <table className='table table-striped table-hover'>
+                        <thead>
+                        Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Address
+                        </thead>
                         <tbody>
                             <ClientList data={this.state.data} filterText={this.state.filterText} deleteHandler={this.deleteHandler.bind(this)}/>
                         </tbody>

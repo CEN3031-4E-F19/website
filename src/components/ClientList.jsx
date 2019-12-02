@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 class ClientList extends Component {
 
     render() {
@@ -8,17 +7,21 @@ class ClientList extends Component {
         .filter(client => {
             return client.clientName.toLowerCase().indexOf(filterText.toLowerCase()) >= 0
         })
+
         .map(client => {
             return(
-                <tr key = {client.id}>
-                    <td>{client.clientName}</td>
-                    <td>{client.clientEmail}</td>
-                    <td>{client.clientAddress}</td>
-                    <button onClick={() => deleteHandler(client._id)}>Delete</button>
-                </tr>    
+                <table>
+                    <tr key = {client.id}>
+                        <td>{client.clientName}</td>
+                        <td>{client.clientEmail}</td>
+                        <td>{client.clientAddress}</td>
+                        <button onClick={() => deleteHandler(client._id)}>Delete</button>
+                    </tr>
+                </table>
+
             );
         }); 
-        return <div>{clientList}</div>      
+        return <div>{clientList}</div>
     }
 }
 

@@ -4,10 +4,10 @@ const path = require('path'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     router = require('../routes/client.server.routes.js');
-    cors = require('cors');
+cors = require('cors');
 
 module.exports.init = () => {
-    /* 
+    /*
         connect to database
         - reference README for db uri
     */
@@ -35,6 +35,9 @@ module.exports.init = () => {
 
     app.use(cors(corsOptions));
 
+
+
+
     if (process.env.NODE_ENV === 'production') {
         // Serve any static files
         app.use(express.static(path.join(__dirname, '../../build')));
@@ -47,4 +50,3 @@ module.exports.init = () => {
 
     return app
 }
-
