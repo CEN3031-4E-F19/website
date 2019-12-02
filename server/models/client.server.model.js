@@ -7,6 +7,7 @@ var mongoose = require('mongoose'),
      See also https://scotch.io/tutorials/using-mongoosejs-in-node-js-and-mongodb-applications
   */
 var clientSchema = new Schema({
+  
   clientName: String,
   clientEmail: String,
   clientAddress: String,
@@ -17,6 +18,7 @@ var clientSchema = new Schema({
   clientPay: Number,
   anotherProb: String,
   waterTesting: String
+  
 });
 
 

@@ -2,9 +2,8 @@ var mongoose = require('mongoose')
     Article = require('../models/article.server.model')
     cheerio = require('cheerio')
     axios = require('axios')
-    cron = require('node-cron')
 
-    async function scraperPacific(){
+    async function scraperPacific(callback){
         for(var i = 1; i<5; i++){
           const pacInstUrl = 'https://pacinst.org/media-news/page/'+i;
           let body = await axios.get(pacInstUrl);
@@ -25,9 +24,10 @@ var mongoose = require('mongoose')
               
             });
         }
+        callback();
       }
 
-      async function scraperUnWater(){
+      async function scraperUnWater(callback){
         for(var i = 1; i<5; i++){
           const unUrl = 'https://www.unwater.org/news/un-water-news/page/'+i;
           let body = await axios.get(unUrl);
@@ -47,6 +47,7 @@ var mongoose = require('mongoose')
             
             });
         }
+        callback();
       }
 
 
@@ -54,19 +55,12 @@ var mongoose = require('mongoose')
 
 
 
-      cron.schedule('0 1 * * *', () => {
-        console.log("in Cron");
-        Article.deleteMany({},function(err){
-            if(err) console.log(err);
-            if(!err) console.log('all good');
-        });
+    
+    exports.updateDatabase= function(req,res){
         scraperPacific();
         scraperUnWater();
-      },{  
-      scheduled: true,
-      timezone: "America/Sao_Paulo"});
-    
-    
+        res.send("Filling Database");
+    }
 
     exports.getAllArticles=function(req,res){
         Article.find({},(err,articles)=>{
