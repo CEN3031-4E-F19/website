@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import ClientList from './ClientList';
+import Search from './Search';
 import axios from 'axios';
 
 class AdminPanel extends Component {
     constructor(props) {
         super(props);
-        this.state = {data:[]}
+        this.state = {data:[], filterText: ''}
     }
     componentDidMount(){
         axios.get('api/clients').then((req,res) => {
@@ -13,13 +14,22 @@ class AdminPanel extends Component {
         });
     }
 
+    filterUpdate(value) {
+        this.setState({
+            filterText: value
+        });
+    }
+
     render() {
         return (
             <div>
+                <h2 className='text-center'>Admin Panel</h2>
+                <Search filterText={this.state.filterText} filterUpdate={this.filterUpdate.bind(this)}/>
                 <div>
-                    <h2 className='text-center'>Admin Panel</h2>
                     <table className='table table-striped table-hover'>
-                    <ClientList data={this.state.data}/>
+                        <tbody>
+                            <ClientList data={this.state.data} filterText={this.state.filterText}/>
+                        </tbody>
                     </table>
                 </div>
             </div>
