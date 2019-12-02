@@ -227,19 +227,19 @@ class Form extends Component {
                 <div className="form-group">
                     <label>
                         Email:
-                        <input required id="email" name="clientEmail" type ="text" className="form-control" placeholder="name@example.com" onChange={this.handleChange}/>
+                        <input required id="email" name="clientEmail" type ="text" className={`form-control ${this.errorClass(this.state.formErrors.clientEmail)}`} placeholder="name@example.com" onChange={this.handleChange}/>
                     </label>
                 </div>
                 <div className="form-group">
                     <label>
                         Address:
-                        <input id="address" name="clientAddress" className="form-control" type="text" onChange={this.handleChange}/>
+                        <input id="address" name="clientAddress" className={`form-control ${this.errorClass(this.state.formErrors.clientAddress)}`} type="text" onChange={this.handleChange}/>
                     </label>
                 </div>
                 <div className="form-group">
                     <label>
                         ZIP Code (no dashes):
-                        <input id="zip" name="clientZip" className="form-control" type="text"
+                        <input id="zip" name="clientZip" className={`form-control ${this.errorClass(this.state.formErrors.clientZip)}`} type="text"
                         value = {this.state.clientZip}
                         onChange={(event) => {this.handleChange(event)}}
                         />
@@ -328,7 +328,7 @@ class Form extends Component {
                 </div>
 
                 <div className="form-group">
-                    <label>Please upload any relevent information
+                    <label>Please upload any relevant information
                         <input type="file" className="form-control-file"/>                        
                     </label>
 
