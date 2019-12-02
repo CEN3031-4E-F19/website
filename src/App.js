@@ -3,6 +3,7 @@ import Home from './components/Home';
 import Form from './components/Form';
 import Error from './components/Error';
 import NavBar from './components/NavBar';
+import Login from './components/Login'
 
 import AdminPanel from './components/AdminPanel';
 
@@ -27,7 +28,9 @@ class App extends Component {
                   <Route path="/Admin">
                         <AdminPanel/>
                   </Route>
-
+                  <Route path="/Login">
+                    <Login/>
+                  </Route>
 
                   <Route>
                         <Error/>
