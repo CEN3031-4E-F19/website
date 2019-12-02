@@ -1,0 +1,12 @@
+.table {
+    vertical-align: center;
+    border-collapse: collapse;
+}
+tbody{
+    margin:auto !important;
+    width: 50% ;
+    border: 1px solid black;
+}
+thead{
+    border: 1px solid black;
+}
