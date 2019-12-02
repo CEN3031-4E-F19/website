@@ -23,6 +23,17 @@ module.exports.init = () => {
     // enable request logging for development debugging
     app.use(morgan('dev'));
 
+    /*
+    //adds react production build to serve react requests
+    app.use(express.static(path.join(__dirname, "../src")));
+
+    //react root
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, "../../public/index.html"))
+    })
+    */
+    
+
     // body parsing middleware
     app.use(bodyParser.json());
 
@@ -35,7 +46,7 @@ module.exports.init = () => {
 
     app.use(cors(corsOptions));
 
-    if (process.env.NODE_ENV === 'production') {
+    //if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'development') {
         // Serve any static files
         app.use(express.static(path.join(__dirname, '../../build')));
 
@@ -43,7 +54,8 @@ module.exports.init = () => {
         app.get('*', function(req, res) {
             res.sendFile(path.join(__dirname, '../../build', 'index.html'));
         });
-    }
+    //}
+    
 
     return app
 }
