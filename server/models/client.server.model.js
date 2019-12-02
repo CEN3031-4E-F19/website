@@ -11,13 +11,14 @@ var clientSchema = new Schema({
   clientName: String,
   clientEmail: String,
   clientAddress: String,
+  clientZip: Number,
   clientHouseAge: Number,
   clientQuestion: String,
   clientCare: String,
   clientPay: Number,
   anotherProb: String,
   waterTesting: String
-
+  
 });
 
 
