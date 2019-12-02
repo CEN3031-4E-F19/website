@@ -46,7 +46,7 @@ module.exports.init = () => {
 
     app.use(cors(corsOptions));
 
-    if (process.env.NODE_ENV === 'production') {
+    //if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'development') {
         // Serve any static files
         app.use(express.static(path.join(__dirname, '../../build')));
 
@@ -54,7 +54,7 @@ module.exports.init = () => {
         app.get('*', function(req, res) {
             res.sendFile(path.join(__dirname, '../../build', 'index.html'));
         });
-    }
+    //}
     
 
     return app
