@@ -1,0 +1,33 @@
+button{
+    color: white;
+    background-color: brown;
+    height: 45px;
+    width: 80px;
+    border-radius: 8px;
+}
+tr{
+    table-layout: fixed;
+    font-family: Arial;
+}
+td.Name{
+    width: 10%;
+
+    border: 1px solid black;
+    word-wrap: break-word;
+}
+
+td.Email{
+    width: 20%;
+    border: 1px solid black;
+    word-wrap: break-word;
+}
+td.Address{
+    width: 30%;
+    border: 1px solid black;
+    word-wrap: break-word;
+}
+td.Questions{
+    width: 40%;
+    border: 1px solid black;
+    word-wrap: break-word;
+}

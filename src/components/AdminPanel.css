@@ -1,12 +1,16 @@
-.table {
+table {
+    margin-top: 5px;
     vertical-align: center;
     border-collapse: collapse;
 }
 tbody{
-    margin:auto !important;
-    width: 50% ;
+    top: 5000px;
+    bottom: auto;
+    left: 500px;
+    right: auto;
     border: 1px solid black;
 }
 thead{
     border: 1px solid black;
 }
+

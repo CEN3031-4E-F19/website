@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './ClientList.css'
 class ClientList extends Component {
 
     render() {
@@ -8,14 +8,16 @@ class ClientList extends Component {
         .filter(client => {
             return client.clientName.toLowerCase().indexOf(filterText.toLowerCase()) >= 0
         })
+
         .map(client => {
             return(
-                <tr key = {client.id}>
-                    <td>{client.clientName}</td>
-                    <td>{client.clientEmail}</td>
-                    <td>{client.clientAddress}</td>
+                <tr key = {client.id} onClick={() => this.props.selectedUpdate(client._id)}>
+                    <td class = "Name">{client.clientName}</td>
+                    <td class = "Email">{client.clientEmail}</td>
+                    <td class = "Address">{client.clientAddress}</td>
+                    <td class = "Questions">{client.clientQuestion}</td>
                     <button onClick={() => deleteHandler(client._id)}>Delete</button>
-                </tr>    
+                </tr>
             );
         }); 
         return <div>{clientList}</div>      
