@@ -47,9 +47,12 @@ module.exports.init = () => {
 
     app.use(cors(corsOptions));
 
+<<<<<<< HEAD
 
     
     
+=======
+>>>>>>> bd138e9880d5561e253dbb7fd76c613a13fde42d
     if (process.env.NODE_ENV === 'production') {
         // Serve any static files
         app.use(express.static(path.join(__dirname, '../../build')));
