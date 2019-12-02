@@ -312,11 +312,11 @@ class Form extends Component {
                 <label>
                     How much do you care about the quality of your tap water?
                 <select name="clientCare" onChange={this.handleChange}>
-                    <option value="1">1</option>
+                    <option value="1">1 (not very much)</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
-                    <option value="5">5</option>
+                    <option value="5">5 (very much)</option>
                 </select>
                 </label>
                 </div>
