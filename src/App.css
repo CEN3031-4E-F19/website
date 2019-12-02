@@ -154,3 +154,13 @@ select {
   text-align: center;
   font-weight: bold;
 }
+
+.navBar{
+  /*display: block;*/
+  padding: 50px;
+  /*background-color: #a8ebdd;*/
+  display: table;
+  font-size: 15px;
+  text-align: right;
+  float: right;
+}
