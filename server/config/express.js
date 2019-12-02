@@ -27,11 +27,10 @@ module.exports.init = () => {
     app.use(express.static(path.join(__dirname, "../src")));
 
     //react root
-    /*
     app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname, "../../public/index.html"))
     })
-    */
+    
 
     // body parsing middleware
     app.use(bodyParser.json());
@@ -47,7 +46,7 @@ module.exports.init = () => {
 
 
     
-
+    /*
     if (process.env.NODE_ENV === 'production') {
         // Serve any static files
         app.use(express.static(path.join(__dirname, '../../build')));
@@ -57,6 +56,7 @@ module.exports.init = () => {
             res.sendFile(path.join(__dirname, '../../build', 'index.html'));
         });
     }
+    */
 
     return app
 }
