@@ -104,14 +104,25 @@ class Form extends Component {
         });
     }
 
-    handleChange(event){
+    handleChange(event) {
         const value = event.target.value;
         const name = event.target.name;
-        this.setState({[name]:value},
-            () => {
-                this.validateField(name, value);
-            }
-        );
+        if(name == "clientHouseAge")
+        {
+            {/* This code is different from the other form inputs
+                as it was rewritten to only allow number inputs.
+                It is based on an example from
+                https://stackoverflow.com/a/47900329 */}
+            this.setState({[name]: value.replace(/\D/,'')});
+        }
+        else
+        {
+            this.setState({[name]:value},
+                () => {
+                    this.validateField(name, value);
+                }
+            );
+        }
 
     }
 
@@ -198,16 +209,6 @@ class Form extends Component {
         return(error.length === 0 ? '' : 'has-error');
     }
 
-    removeNonNums(event) {
-        //console.log('houseAge before: ', event.target.value);
-        this.setState(
-            {
-                clientHouseAge: event.target.value.replace(/\D/,'')
-            }
-        )  
-        //console.log(this.state);
-    }
-
     render() { 
         return (
             <form className="text-center" id="contactForm" onSubmit={this.handleSubmit} >
@@ -244,7 +245,7 @@ class Form extends Component {
                         value = {this.state.clientHouseAge}
                         onChange= {  
                                 (event) =>  {
-                                    this.removeNonNums(event); this.handleChange(event);
+                                    this.handleChange(event);
                                 }
                                 
                         
