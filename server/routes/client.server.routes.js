@@ -50,13 +50,11 @@ router.post('/clientFormSubmit', (req, res) => {
   })
 })
 
-
-
-
-
+router.delete('/clients/:clientId',client.delete);
+router.get('/clients/:clientId',client.findOne);
+router.get('/clients/',client.findAll);
 
 router.get('/articleScrape', articleController.updateDatabase);
-
 router.get('/getArticles',articleController.getAllArticles);
-  
+
 module.exports = router;
