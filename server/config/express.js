@@ -23,6 +23,14 @@ module.exports.init = () => {
     // enable request logging for development debugging
     app.use(morgan('dev'));
 
+    //adds react production build to serve react requests
+    app.use(express.static(path.join(__dirname, "../src")));
+
+    //react root
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname + "../public/index.html"))
+    })
+
     // body parsing middleware
     app.use(bodyParser.json());
 
