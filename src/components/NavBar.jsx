@@ -7,9 +7,9 @@ class NavBar extends Component {
         <nav className="navbar navbar-expand-lg">
             <img className="navbar-brand" src = "/niekaabLogo.png" width="10%" height="10%"/>  
             <ul className="navbar-nav">
-                <li className="nav-item nav-link"><NavLink to="/">Home</NavLink></li>
-                <li className="nav-item nav-link"><NavLink to="/Contact">Contact</NavLink></li>
-                <li className="nav-item nav-link"><NavLink to="/News">News</NavLink></li>
+                <li className="navBar nav-item nav-link"><NavLink to="/">Home</NavLink></li>
+                <li className="navBar nav-item nav-link"><NavLink to="/Contact">Contact</NavLink></li>
+                <li className="navBar nav-item nav-link"><NavLink to="/News">News</NavLink></li>
             </ul>          
         </nav>
         );
