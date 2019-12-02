@@ -5,16 +5,22 @@ var client = require('../controllers/client.server.controller.js')
 
 router.post('/clientFormSubmit', (req, res) => {
   let client = new Client();
-  console.log(req.body);
+  //console.log('client: ', client);
+  //console.log('in request handler ', res);
   const { 
     clientName, 
     clientEmail, 
     clientHouseAge, 
     clientAddress, 
+    clientZip,
     problem,
     knowProb,
     clientQuestion,
-    problemDesc
+    problemDesc,
+    clientCare,
+    clientPay,
+    anotherProb,
+    waterTesting
   } = req.body;
 
   client.clientName = clientName;
@@ -25,6 +31,11 @@ router.post('/clientFormSubmit', (req, res) => {
   client.knowProb = knowProb;
   client.clientQuestion = clientQuestion;
   client.problemDesc = problemDesc;
+  client.clientCare = clientCare;
+  client.clientPay = clientPay;
+  client.anotherProb = anotherProb;
+  client.waterTesting = waterTesting;
+  client.clientZip = clientZip;
 
   client.save((err) => {
     if (err) {
