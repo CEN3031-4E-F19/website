@@ -208,7 +208,7 @@ class Form extends Component {
     }
     
     errorClass(error) {
-        return(error.length === 0 ? '' : 'has-error');
+        return(error.length === 0 ? '' : 'is-invalid');
     }
 
     render() { 
@@ -220,7 +220,7 @@ class Form extends Component {
                 <div className="form-group">
                     <label>
                         Name:
-                        <input required id="name" name="clientName" type="text" className="form-control" onChange={this.handleChange}/>
+                        <input required id="name" name="clientName" type="text" className={`form-control ${this.errorClass(this.state.formErrors.clientName)}`} onChange={this.handleChange}/>
                     </label>
                 </div>
                 {/*<div className={'${this.errorClass(this.state.formErrors.clientEmail)'}>*/}
