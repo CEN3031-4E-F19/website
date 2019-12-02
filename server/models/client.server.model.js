@@ -7,17 +7,16 @@ var mongoose = require('mongoose'),
      See also https://scotch.io/tutorials/using-mongoosejs-in-node-js-and-mongodb-applications
   */
 var clientSchema = new Schema({
-  /* Your code for a schema here */ 
-  //Check out - https://mongoosejs.com/docs/guide.html
   clientName: String,
   clientEmail: String,
   clientAddress: String,
+  clientZip: Number,
   clientHouseAge: Number,
-  clientHasProblem: Boolean,
-  clientKnowsProblem: Boolean,
   clientQuestion: String,
-  clientProblemDesc: String
-
+  clientCare: String,
+  clientPay: Number,
+  anotherProb: String,
+  waterTesting: String
 });
 
 

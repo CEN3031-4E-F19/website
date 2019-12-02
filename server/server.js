@@ -1,4 +1,5 @@
-const express = require('./config/express.js')
+const express = require('../server/config/express.js')
+
  
 // Use env port or default
 const port = process.env.PORT || 5000;
