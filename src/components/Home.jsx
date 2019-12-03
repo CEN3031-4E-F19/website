@@ -1,4 +1,9 @@
 import React from 'react';
+import water from "./waterHand.png"
+import drought from "./Drought.png"
+import drought1 from "./drought.1.png"
+import pipe from "./pipe.png"
+import pipe1 from "./pipe.1.png"
 
 function Home() {
   return (
