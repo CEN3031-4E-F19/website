@@ -1,0 +1,56 @@
+button{
+    color: white;
+    background-color: brown;
+    height: 45px;
+    width: 80px;
+    border-radius: 8px;
+}
+tr{
+    table-layout: fixed;
+    font-family: Arial;
+}
+td.Name{
+    width: 20%;
+
+    border: 1px solid black;
+    word-wrap: break-word;
+}
+
+td.Email{
+    width: 20%;
+    border: 1px solid black;
+    word-wrap: break-word;
+}
+td.Address{
+    width: 40%;
+    border: 1px solid black;
+    word-wrap: break-word;
+}
+td.Questions{
+    width: 40%;
+    border: 1px solid black;
+    word-wrap: break-word;
+}
+
+td.hasProb{
+    border: 1px solid black;
+    width: 10%;
+    background-color: green;
+}
+
+td.noProb{
+    border: 1px solid black;
+    width: 10%;
+    background-color: red;
+}
+td.hasaProb{
+    border: 1px solid black;
+     width: 10%;
+     background-color: green;
+ }
+
+td.notaProb{
+    border: 1px solid black;
+    width: 10%;
+    background-color: red;
+}

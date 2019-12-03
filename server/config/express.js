@@ -4,10 +4,10 @@ const path = require('path'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     router = require('../routes/client.server.routes.js');
-    cors = require('cors');
+cors = require('cors');
 
 module.exports.init = () => {
-    /* 
+    /*
         connect to database
         - reference README for db uri
     */
@@ -59,4 +59,3 @@ module.exports.init = () => {
 
     return app
 }
-

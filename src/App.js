@@ -3,6 +3,7 @@ import Home from './components/Home';
 import Form from './components/Form';
 import Error from './components/Error';
 import NavBar from './components/NavBar';
+import AdminPanel from './components/AdminPanel';
 import News from './components/News'
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
@@ -20,8 +21,11 @@ class App extends Component {
                   <Route path="/Contact">
                         <Form/>
                   </Route>
+                  <Route path="/Admin">
+                        <AdminPanel/>
+                  </Route>
                   <Route path="/News">
-                    <News/>
+                        <News/>
                   </Route>
                   <Route>
                         <Error/>
