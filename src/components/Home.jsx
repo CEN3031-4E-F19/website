@@ -5,7 +5,6 @@ import drought1 from "./drought.1.png"
 import pipe from "./pipe.png"
 import pipe1 from "./pipe.1.png"
 
-
 function Home() {
   return (
     <div className="text-center">
@@ -51,9 +50,5 @@ function Home() {
 //line 28 contains another picture about water
 
 //Lines 30 and 32 contain more information about lead content in water
-
-
-
-
 
 export default Home;

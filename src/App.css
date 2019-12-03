@@ -1,24 +1,29 @@
-.App {
-  text-align: center;
+
+.App {                      /* Refers to the text alignment schema throughout the web application*/
+
+  text-align: center;       /* aligned text to the center*/
+
 }
 
 .App-logo {
-  height: 40vmin;
+
+  height: 40vmin;           /*Inserted the NiekAab Desal Logo to the different tabs in the web application*/
+
 }
 
-.spencers-class-selector {
+.spencers-class-selector {    /*Spencers first comment to better understand the git workflow*/
  color: green;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #282c34;    /*Provides styling to the app header */
+  min-height: 100vh;              /*Styles the height of the app header*/
   display: flex;
-  flex-direction: column;
+  flex-direction: column;         /*Refers to the display and alignment of items in the header*/
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: white;                 /*Keep consistency of color throughout the app*/
 }
 
 .App-link {
