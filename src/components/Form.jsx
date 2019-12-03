@@ -55,36 +55,36 @@ class Form extends Component {
     }
 
     validateField(fieldName, value) {
-        let fieldValidationErrors = this.state.formErrors;
+        let fieldValidationErrors = this.state.formErrors;      /*This ValidateField Method is used to restrict entry in input fields to appropraite values */
 
         switch(fieldName) {
-            case 'clientName': {
+            case 'clientName': {                /*Validates the client name field */
                 this.state.clientNameValid = value.length > 0;
                 fieldValidationErrors.clientName = this.state.clientNameValid ? '' : 'Please provide a name';
                 break;
             }
-            case 'clientEmail': {
+            case 'clientEmail': {               //Validates the clientEmail field
                 this.state.clientEmailValid = /\S+@\S+\.\S+/.test(value);
                 fieldValidationErrors.clientEmail = this.state.clientEmailValid ? '' : 'Email is invalid';
                 break;
             }
-            case 'clientHouseAge': {
+            case 'clientHouseAge': {            //Validates the clientAge field
                 this.state.clientHouseAgeValid = !isNaN(value);
                 fieldValidationErrors.clientHouseAge = this.state.clientHouseAgeValid ? '' : 'Please provide a valid house age';
                 break;
             }
-            case 'clientAddress': {
+            case 'clientAddress': {             //Validates the clientAddress field
                 this.state.clientAddressValid = value.length > 0;
                 fieldValidationErrors.clientHouseAddress = this.state.clientAddressValid ? '' : 'Please provide a home address';
                 break;
             }
-            case 'clientZip': {
+            case 'clientZip': {                 //Validates the clientZip field
                 this.state.clientZipValid = !isNaN(value);
                 fieldValidationErrors.clientZip = this.state.clientZipValid ? '' : 'Please enter a valid zip code';
                 break;
             }
         }
-        this.setState({
+        this.setState({                         //Checks to see the validity of the form inputs 
             formErrors: fieldValidationErrors,
             clientNameValid: this.state.clientNameValid,
             clientEmailValid: this.state.clientEmailValid,
@@ -212,8 +212,8 @@ class Form extends Component {
     }
 
     render() { 
-        return (
-            <form className="text-center" id="contactForm" onSubmit={this.handleSubmit} >
+        return (        //Code for the input fields in our contact form
+            <form className="text-center" id="contactForm" onSubmit={this.handleSubmit} > 
                 <div className="panel panel-default">
                     <FormError formErrors={this.state.formErrors}/>
                 </div>
@@ -229,7 +229,7 @@ class Form extends Component {
                         Email:
                         <input required id="email" name="clientEmail" type ="text" className={`form-control ${this.errorClass(this.state.formErrors.clientEmail)}`} placeholder="name@example.com" onChange={this.handleChange}/>
                     </label>
-                </div>
+                </div>          
                 <div className="form-group">
                     <label>
                         Address:
@@ -249,7 +249,7 @@ class Form extends Component {
                     <label>
                         House Age:
                         <input id="houseAge" name="clientHouseAge" type="text" className="form-control" 
-                        value = {this.state.clientHouseAge}
+                        value = {this.state.clientHouseAge}          
                         onChange= {(event) => {this.handleChange(event)}}
                         />
                     </label>
@@ -266,7 +266,7 @@ class Form extends Component {
                             Yes {' '}
                             <input name="knowProb" type="radio" value="Yes" onClick={this.handleChange}/>
                         </label>
-
+                        
                 </div>
                 <div className="form-group">
                     {this.state.knowProb==="Yes"? <label> Please describe your problem<textarea name ="problemDesc" cols="50" rows="5" className="form-control" row="3" onChange={this.handleChange}/></label>:
@@ -280,7 +280,7 @@ class Form extends Component {
                             No {' '}
                             <input name="anotherProb"type="radio" value="No" defaultChecked onClick={this.handleChange}/>
                         </label>
-                        <label class = 'no'>
+                        <label class = 'no'>    
                             Yes {' '}
                             <input name="anotherProb" type="radio" value="Yes" onClick={this.handleChange}/>
                         </label>
@@ -300,9 +300,9 @@ class Form extends Component {
                         </label>
 
                 </div>
-
+                                
                 <div className="form-group">
-                <label>
+                <label> 
                     How much do you care about the quality of your tap water?
                 <select name="clientCare" onChange={this.handleChange}>
                     <option value="1">1 (not very much)</option>
@@ -343,8 +343,10 @@ class Form extends Component {
 
                 <button className="btn btn-success" disabled={!this.state.formValid}>submit</button>
             </form>
-
-
+        //Above codes the input fields for the questions in our contact form that the customer needs to fill out
+        //We have placed certain restrictions to ensure that the form is taking in appropriate values
+        //Buttons are given styling attributes
+        //Drop down boxes are given hover features
         );
     }
 }
