@@ -82,7 +82,7 @@ class Form extends Component {
                 break;
             }
         }
-        this.setState({
+        this.setState({                         //Checks to see the validity of the form inputs 
             formErrors: fieldValidationErrors,
             clientNameValid: this.state.clientNameValid,
             clientEmailValid: this.state.clientEmailValid,
@@ -142,15 +142,7 @@ class Form extends Component {
 
             
         }
-        //console.log(templateParams);
-        /*
-        emailjs.send(
-             'spencer_gmail',
-             'template_XadAOTCZ',
-              templateParams,
-             'user_M6kLPVJil1znauH2TGfwg'
-        );
-        */
+        
         let clientObject = {
             
             clientName: clientName, 
@@ -191,14 +183,14 @@ class Form extends Component {
     }
 
     render() { 
-        return (
-            <form className="text-center" id="contactForm" onSubmit={this.handleSubmit} >
+        return (        //Code for the input fields in our contact form
+            <form className="text-center" id="contactForm" onSubmit={this.handleSubmit} > 
                 <div className="panel panel-default">
                     <FormError formErrors={this.state.formErrors}/>
                 </div>
                 <div className="form-group">
-                    <label>
-                        Name:
+                    <label>     
+                        Name:               
                         <input required id="name" name="clientName" type="text" className="form-control" onChange={this.handleChange}/>
                     </label>
                 </div>
@@ -208,12 +200,12 @@ class Form extends Component {
                         Email:
                         <input required id="email" name="clientEmail" type ="text" className="form-control has-error" placeholder="name@example.com" onChange={this.handleChange}/>
                     </label>
-                </div>
+                </div>          
                 <div className="form-group">
                     <label>
                         Address:
                         <input id="address" name="clientAddress" className="form-control"type="text" onChange={this.handleChange}/>
-                    </label>
+                    </label> 
                 </div>
                 <div className="form-group">
                     <label>
@@ -229,7 +221,7 @@ class Form extends Component {
                                     this.removeNonNums(event); this.handleChange(event);
                                 }
                                 
-                        
+                        //The code above is created to make sure that the customer only inputs numerical values for the house age
                             }
                         />
                     </label>
@@ -246,7 +238,7 @@ class Form extends Component {
                             Yes {' '}
                             <input name="knowProb" type="radio" value="Yes" onClick={this.handleChange}/>
                         </label>
-
+                        
                 </div>
                 <div className="form-group">
                     {this.state.knowProb==="Yes"? <label> Please describe your problem<textarea name ="problemDesc" cols="50" rows="5" className="form-control" row="3" onChange={this.handleChange}/></label>:
@@ -260,7 +252,7 @@ class Form extends Component {
                             No {' '}
                             <input name="anotherProb"type="radio" value="No" defaultChecked onClick={this.handleChange}/>
                         </label>
-                        <label class = 'no'>
+                        <label class = 'no'>    
                             Yes {' '}
                             <input name="anotherProb" type="radio" value="Yes" onClick={this.handleChange}/>
                         </label>
@@ -280,9 +272,9 @@ class Form extends Component {
                         </label>
 
                 </div>
-
+                                
                 <div className="form-group">
-                <label>
+                <label> 
                     How much do you care about the quality of your tap water?
                 <select name="clientCare" onChange={this.handleChange}>
                     <option value="1">1</option>
@@ -323,8 +315,10 @@ class Form extends Component {
 
                 <button className="btn btn-success" disabled={!this.state.formValid}>submit</button>
             </form>
-
-
+        //Above codes the input fields for the questions in our contact form that the customer needs to fill out
+        //We have placed certain restrictions to ensure that the form is taking in appropriate values
+        //Buttons are given styling attributes
+        //Drop down boxes are given hover features
         );
     }
 }
