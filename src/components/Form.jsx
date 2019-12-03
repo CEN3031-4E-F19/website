@@ -53,30 +53,30 @@ class Form extends Component {
     }
 
     validateField(fieldName, value) {
-        let fieldValidationErrors = this.state.formErrors;
+        let fieldValidationErrors = this.state.formErrors;      /*This ValidateField Method is used to restrict entry in input fields to appropraite values */
 
         switch(fieldName) {
-            case 'clientName': {
+            case 'clientName': {                /*Validates the client name field */
                 this.state.clientNameValid = value.length > 0;
                 fieldValidationErrors.clientName = this.state.clientNameValid ? '' : 'Please provide a name';
                 break;
             }
-            case 'clientEmail': {
+            case 'clientEmail': {               //Validates the clientEmail field
                 this.state.clientEmailValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
                 fieldValidationErrors.clientEmail = this.state.clientEmailValid ? '' : 'Email is invalid';
                 break;
             }
-            case 'clientHouseAge': {
+            case 'clientHouseAge': {            //Validates the clientAge field
                 this.state.clientHouseAgeValid = value.length > 0;
                 fieldValidationErrors.clientHouseAge = this.state.clientHouseAgeValid ? '' : 'Please provide a house age';
                 break;
             }
-            case 'clientAddress': {
+            case 'clientAddress': {             //Validates the clientAddress field
                 this.state.clientAddressValid = value.length > 0;
                 fieldValidationErrors.clientHouseAddress = this.state.clientAddressValid ? '' : 'Please provide a home address';
                 break;
             }
-            case 'clientZip': {
+            case 'clientZip': {                 //Validates the clientZip field
                 this.state.clientZipValid = value.length === 5;
                 fieldValidationErrors.clientZip = this.state.clientZipValid ? '' : 'Please enter a valid zip code';
                 break;
