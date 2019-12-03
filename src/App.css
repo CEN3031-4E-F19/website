@@ -164,3 +164,8 @@ select {
   text-align: right;
   float: right;
 }
+
+
+.pagination {
+  justify-content: center;
+}
