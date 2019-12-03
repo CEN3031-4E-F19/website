@@ -8,13 +8,14 @@ import axios from 'axios';
 class AdminPanel extends Component {
     constructor(props) {
         super(props);
-        this.state = {data:[], filterText: '', selectedClient: 0,}
+        this.state = {data:[], filterText: '', selectedClient: 0}
     }
     componentDidMount(){
         axios.get('api/clients').then((req,res) => {
             this.setState({data:req.data})
         });
     }
+    
     selectedUpdate(id){
         this.setState({
             selectedClient: id
@@ -32,7 +33,7 @@ class AdminPanel extends Component {
         parseInt(itemId);
         let objIdToDelete = null;
         this.state.data.forEach((dat) => {
-            if (dat.id == itemId) {
+            if (dat.id === itemId) {
                 objIdToDelete = dat._id;
             }
         });
@@ -64,10 +65,7 @@ class AdminPanel extends Component {
                         </tbody>
                     </table>
                     <div>
-                            <ViewClient>
-                            selectedClient = {this.state.selectedClient}
-                            data = {this.state.data}
-                            </ViewClient>
+                            <ViewClient selectedClient = {this.state.selectedClient} data = {this.state.data}/>      
                     </div>
                 </div>
 

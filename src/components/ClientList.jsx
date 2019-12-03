@@ -3,7 +3,7 @@ import './ClientList.css'
 class ClientList extends Component {
 
     render() {
-        const {data,filterText,deleteHandler} = this.props;
+        const {data,filterText,selectedUpdate,deleteHandler} = this.props;
         const clientList = data
         .filter(client => {
             return client.clientName.toLowerCase().indexOf(filterText.toLowerCase()) >= 0
@@ -11,7 +11,7 @@ class ClientList extends Component {
 
         .map(client => {
             return(
-                <tr key = {client.id} onClick={() => this.props.selectedUpdate(client._id)}>
+                <tr key = {client._id} onClick={() => selectedUpdate(client._id)}>
                     <td class = "Name">{client.clientName}</td>
                     <td class = "Email">{client.clientEmail}</td>
                     <td class = "Address">{client.clientAddress}</td>
