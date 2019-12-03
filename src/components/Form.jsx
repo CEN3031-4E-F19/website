@@ -97,8 +97,7 @@ class Form extends Component {
         this.setState({
             formValid:  this.state.clientNameValid &&
                         this.state.clientEmailValid &&
-                        this.state.clientAddressValid &&
-                        this.state.clientHouseAgeValid
+                        this.state.clientAddressValid
         });
     }
 
