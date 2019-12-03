@@ -1,7 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # configuration
-/server/config/config.js
+# /server/config/config.js
 
 # dependencies
 /node_modules

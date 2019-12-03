@@ -3,7 +3,6 @@ var client = require('../controllers/client.server.controller.js')
     mongoose = require('mongoose')
     express = require('express')
     articleController = require('../controllers/article.server.controller')
-
     router = express.Router();
 
 
@@ -16,6 +15,7 @@ router.post('/clientFormSubmit', (req, res) => {
     clientEmail,
     clientHouseAge,
     clientAddress,
+    clientZip,
     problem,
     knowProb,
     clientQuestion,
@@ -38,6 +38,7 @@ router.post('/clientFormSubmit', (req, res) => {
   client.clientPay = clientPay;
   client.anotherProb = anotherProb;
   client.waterTesting = waterTesting;
+  client.clientZip = clientZip;
 
   client.save((err) => {
     if (err) {
@@ -47,6 +48,7 @@ router.post('/clientFormSubmit', (req, res) => {
     }
   })
 })
+
 
 router.get('/articleScrape', articleController.updateDatabase);
 
