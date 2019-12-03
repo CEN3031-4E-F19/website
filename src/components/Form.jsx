@@ -169,7 +169,7 @@ class Form extends Component {
                 //console.log('response', req);
             });
         
-        event.preventDefault();
+        //event.preventDefault();
         event.reset();
         
         
