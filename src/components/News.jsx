@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 import Article from './Article';
 import axios from 'axios';
 import Pagination from 'react-bootstrap/Pagination'
+import Search from './Search'
 
 class News extends Component {
     constructor(props) {
         super(props);
-        this.state = {data:[],indexStart:1}
+        this.state = {data:[],indexStart:1,filter:''}
         this.handlePageChange=this.handlePageChange.bind(this);
     }
-
+    filterUpdate(value){
+        this.setState({filter:value});
+    }
     handlePageChange(event){
         console.log(event.target.text);
         this.setState({indexStart:event.target.text});
@@ -36,8 +39,9 @@ class News extends Component {
                 <div>
                 <h2 className='text-center'>News</h2>
                 </div>
-                 <Article data={this.state.data} indexStart={this.state.indexStart}/>
-                 <Pagination onClick={this.handlePageChange}>{items}</Pagination>
+                    <Search filterUpdate={this.filterUpdate.bind(this)}/>
+                    <Article data={this.state.data} indexStart={this.state.indexStart} filterText={this.state.filter}/>
+                    <Pagination onClick={this.handlePageChange}>{items}</Pagination>
             </div>
             );
     }

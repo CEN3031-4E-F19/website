@@ -11,7 +11,9 @@ class Article extends Component {
     render() { 
         var endIndex = this.props.indexStart*10-1>this.props.data.length?this.props.data.length:this.props.indexStart*10;
         var indexbegin = this.props.indexStart==1?0:this.props.indexStart*10-10;
-        const articleList = this.props.data.slice(indexbegin,endIndex).map((article,i)=>{
+        const articleList = this.props.data.filter(articles=>{
+            return articles.title.indexOf(this.props.filterText)>=0;
+        }).slice(indexbegin,endIndex).map((article,i)=>{
             return(
             <div className="row" key={i}>
                 <Card style = {{width: '85rem'}} className="mx-auto shadow-sm p-3 mb-2 bg-white rounded " >
