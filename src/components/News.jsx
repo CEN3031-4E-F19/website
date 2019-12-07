@@ -3,6 +3,7 @@ import Article from './Article';
 import axios from 'axios';
 import Pagination from 'react-bootstrap/Pagination'
 import Search from './Search'
+import '../news.css'
 
 class News extends Component {
     constructor(props) {
