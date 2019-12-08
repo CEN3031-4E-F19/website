@@ -12,7 +12,7 @@ class Article extends Component {
         var endIndex = this.props.indexStart*10-1>this.props.data.length?this.props.data.length:this.props.indexStart*10;
         var indexbegin = this.props.indexStart==1?0:this.props.indexStart*10-10;
         const articleList = this.props.data.filter(articles=>{
-            return articles.title.indexOf(this.props.filterText)>=0;
+            return articles.title.toLowerCase().indexOf(this.props.filterText.toLowerCase())>=0;
         }).slice(indexbegin,endIndex).map((article,i)=>{
             return(
             <div className="row" key={i}>
