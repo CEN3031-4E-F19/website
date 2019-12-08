@@ -44,8 +44,7 @@ p {
 
 
 label {               /*Worked on styling the label in the contact form to improve aesthetic of the application*/
-
-  display: flex;      /*Modified and styled ocntent through alignment, width modification, and height modification*/
+   /*Modified and styled ocntent through alignment, width modification, and height modification*/
 
 
   flex-direction: row;

@@ -113,7 +113,7 @@ class Form extends Component {
     }
 
     handleSubmit(event){
-        event.preventDefault();
+        
         const { clientName, 
                 clientEmail, 
                 clientHouseAge, 
@@ -170,7 +170,7 @@ class Form extends Component {
             });
         
         //event.preventDefault();
-        //event.reset();
+        event.reset();
         
         
     }
