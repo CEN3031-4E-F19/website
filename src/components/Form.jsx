@@ -4,6 +4,7 @@ import { template } from '@babel/core';
 import { throwStatement, restElement } from '@babel/types';
 import FormError from './FormError';
 import axios from 'axios';
+import './Form.css';
 
 class Form extends Component {
     constructor(props) {
@@ -236,22 +237,49 @@ class Form extends Component {
                         />
                     </label>
                 </div>
+                <fieldset class="form-group">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked></input>
+                                <label class="form-check-label" for="gridRadios1">
+                                    First radio
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2"></input>
+                                <label class="form-check-label" for="gridRadios2">
+                                    Second radio
+                            </label>
+                            </div>
+                            <div class="form-check disabled">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled></input>
+                                <label class="form-check-label" for="gridRadios3">
+                                    Third disabled radio
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                
+
                 <div className="form-group">
                     <p>
                         Are you a
-                    </p>
-                        <label>
-                            potential customer? {' '}
-                            <input name="clientType"type="radio" value="customer" defaultChecked onClick={this.handleChange}/>
-                        </label>
-                        <label className ="m-2">
-                            potential investor? {' '}
-                            <input name="clientType" type="radio" value="investor" onClick={this.handleChange}/>
-                        </label>
-                        <label className ="m-2">
-                            potential partner/collaborator? {' '}
-                            <input name="clientType" type="radio" value="partner" onClick={this.handleChange}/>
-                        </label>
+
+                            <input name="clientType" type="radio" id="customer" value="customer" defaultChecked onClick={this.handleChange}/>
+                            <label for="customer">potential customer?</label>
+
+                            <input name="clientType" type="radio" id="investor" value="investor" onClick={this.handleChange}/>
+                            <label for="investor">potential investor?</label>
+
+                            <input name="clientType" type="radio" id="partner" value="partner" onClick={this.handleChange}/>
+                            <label for="partner">potential collaborator?</label>
+                    </p>       
                 </div>
                 <div className="form-group">
                     <p>
