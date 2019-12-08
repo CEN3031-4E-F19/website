@@ -1,6 +1,6 @@
 {
   "name": "four_e_website",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "axios": "^0.19.0",
@@ -10,7 +10,6 @@
     "emailjs-com": "^2.4.1",
     "mongoose": "^5.7.11",
     "morgan": "^1.9.1",
-    "node-cron": "^2.0.3",
     "react": "^16.11.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.11.0",
@@ -21,10 +20,9 @@
     "typescript": "^3.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "cd server && npm install && node server.js",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "heroku-postbuild": "cd src && npm install && npm run build"
   },
   "proxy": "http://localhost:5000/",
   "eslintConfig": {

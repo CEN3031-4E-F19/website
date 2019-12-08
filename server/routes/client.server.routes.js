@@ -3,22 +3,27 @@ var client = require('../controllers/client.server.controller.js')
     mongoose = require('mongoose')
     express = require('express')
     articleController = require('../controllers/article.server.controller')
-   
     router = express.Router();
 
 
 router.post('/clientFormSubmit', (req, res) => {
   let client = new Client();
-  console.log(req.body);
-  const { 
-    clientName, 
-    clientEmail, 
-    clientHouseAge, 
-    clientAddress, 
+  //console.log('client: ', client);
+  //console.log('in request handler ', res);
+  const {
+    clientName,
+    clientEmail,
+    clientHouseAge,
+    clientAddress,
+    clientZip,
     problem,
     knowProb,
     clientQuestion,
-    problemDesc
+    problemDesc,
+    clientCare,
+    clientPay,
+    anotherProb,
+    waterTesting
   } = req.body;
 
   client.clientName = clientName;
@@ -29,6 +34,11 @@ router.post('/clientFormSubmit', (req, res) => {
   client.knowProb = knowProb;
   client.clientQuestion = clientQuestion;
   client.problemDesc = problemDesc;
+  client.clientCare = clientCare;
+  client.clientPay = clientPay;
+  client.anotherProb = anotherProb;
+  client.waterTesting = waterTesting;
+  client.clientZip = clientZip;
 
   client.save((err) => {
     if (err) {
@@ -40,9 +50,8 @@ router.post('/clientFormSubmit', (req, res) => {
 })
 
 
-
-
+router.get('/articleScrape', articleController.updateDatabase);
 
 router.get('/getArticles',articleController.getAllArticles);
-  
+
 module.exports = router;
