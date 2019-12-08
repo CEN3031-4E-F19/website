@@ -238,6 +238,23 @@ class Form extends Component {
                 </div>
                 <div className="form-group">
                     <p>
+                        Are you a
+                    </p>
+                        <label>
+                            potential customer? {' '}
+                            <input name="clientType"type="radio" value="customer" defaultChecked onClick={this.handleChange}/>
+                        </label>
+                        <label className ="m-2">
+                            potential investor? {' '}
+                            <input name="clientType" type="radio" value="investor" onClick={this.handleChange}/>
+                        </label>
+                        <label className ="m-2">
+                            potential partner/collaborator? {' '}
+                            <input name="clientType" type="radio" value="partner" onClick={this.handleChange}/>
+                        </label>
+                </div>
+                <div className="form-group">
+                    <p>
                         Do you know the problem with your tap water?
                     </p>
                         <label>
@@ -248,7 +265,6 @@ class Form extends Component {
                             Yes {' '}
                             <input name="knowProb" type="radio" value="Yes" onClick={this.handleChange}/>
                         </label>
-                        
                 </div>
                 <div className="form-group">
                     {this.state.knowProb==="Yes"? <label> Please describe your problem<textarea name ="problemDesc" cols="50" rows="5" className="form-control" row="3" onChange={this.handleChange}/></label>:
