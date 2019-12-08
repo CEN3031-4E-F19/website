@@ -2,12 +2,14 @@
     font-size:20px;
     width: 50%;
     border: 2px solid #f0f1f2;
+    -webkit-transition: border 1s; /* Safari prior 6.1 */
+    transition: border 1s;
     border-radius: 4px;
     margin-bottom: 10px;
 }
 
 .search-bar:focus{
-    border: solid #84e0ce;
+    border: 2px solid #84e0ce;
 }
 
 .news-header{
