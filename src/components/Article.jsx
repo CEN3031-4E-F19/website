@@ -16,7 +16,7 @@ class Article extends Component {
         }).slice(indexbegin,endIndex).map((article,i)=>{
             return(
             <div className="row" key={i}>
-                <Card style = {{width: '85rem'}} className="mx-auto shadow-sm p-3 mb-2 bg-white rounded " >
+                <Card style = {{width: '85rem'}} className="mx-auto p-3 mb-2 bg-white rounded article-card" >
                 <Card.Title><u>{article.title}</u></Card.Title>
                 <Card.Body>{article.description}</Card.Body>
                 <p>Click To Read More...</p>
