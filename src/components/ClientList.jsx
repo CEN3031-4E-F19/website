@@ -25,13 +25,13 @@ class ClientList extends Component {
                     <td class = "Name">{client.clientName}</td>
                     <td class = "Email">{client.clientEmail}</td>
                     <td class = "Address">{client.clientAddress}</td>
-                    <td class = {boolProb}></td>
-                    <td class = {boolTest}></td>
+                    <td class = {boolProb}>{client.anotherProb}</td>
+                    <td class = {boolTest}>{client.waterTesting}</td>
                     <button onClick={() => deleteHandler(client._id)}>Delete</button>
                 </tr>
             );
         }); 
-        return <div>{clientList}</div>      
+        return <tbody>{clientList}</tbody>
     }
 }
 

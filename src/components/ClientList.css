@@ -35,22 +35,18 @@ td.Questions{
 td.hasProb{
     border: 1px solid black;
     width: 10%;
-    background-color: green;
 }
 
 td.noProb{
     border: 1px solid black;
     width: 10%;
-    background-color: red;
 }
 td.hasaProb{
     border: 1px solid black;
      width: 10%;
-     background-color: green;
  }
 
 td.notaProb{
     border: 1px solid black;
     width: 10%;
-    background-color: red;
 }
