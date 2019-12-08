@@ -1,13 +1,13 @@
 .search-bar{
     font-size:20px;
     width: 50%;
-    border: 2px solid #aac9fa;
+    border: 2px solid #f0f1f2;
     border-radius: 4px;
     margin-bottom: 10px;
 }
 
 .search-bar:focus{
-    border: solid #5991eb;
+    border: solid #84e0ce;
 }
 
 .news-header{
