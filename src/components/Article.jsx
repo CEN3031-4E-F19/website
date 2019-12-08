@@ -17,8 +17,9 @@ class Article extends Component {
             return(
             <div className="row" key={i}>
                 <Card style = {{width: '85rem'}} className="mx-auto shadow-sm p-3 mb-2 bg-white rounded " >
-                <Card.Title>{article.title}</Card.Title>
+                <Card.Title><u>{article.title}</u></Card.Title>
                 <Card.Body>{article.description}</Card.Body>
+                <p>Click To Read More...</p>
                 <a target='_blank' href={article.link} className="stretched-link"/>
                 </Card>
             </div>

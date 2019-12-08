@@ -37,8 +37,8 @@ class News extends Component {
         }
         return ( 
             <div>
-                <div>
-                <h2 className='text-center'>News</h2>
+                <div className="news-header">
+                <h2 className='text-center text-white'>News</h2>
                 </div>
                     <Search filterUpdate={this.filterUpdate.bind(this)}/>
                     <Article data={this.state.data} indexStart={this.state.indexStart} filterText={this.state.filter}/>
