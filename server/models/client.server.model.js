@@ -15,7 +15,7 @@ var clientSchema = new Schema({
   clientZip: Number,
   clientHouseAge: Number,
   clientQuestion: String,
-  clientCare: String,
+  clientCare: Number,
   clientPay: Number,
   anotherProb: String,
   waterTesting: String
