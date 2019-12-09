@@ -248,3 +248,7 @@ select {                /*Added styling to the drop down box to improve aestheti
 .pagination {
   justify-content: center;
 }
+
+.navbar-shadow{
+  box-shadow: inset 0px -5px 0px 0px rgba(224, 239, 241, 0.397);
+}
