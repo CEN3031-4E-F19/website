@@ -202,8 +202,7 @@ class Form extends Component {
                         <input required id="name" name="clientName" type="text" className={`form-control ${this.errorClass(this.state.formErrors.clientName)}`} onChange={this.handleChange}/>
                     </label>
                 </div>
-                {/*<div className={'${this.errorClass(this.state.formErrors.clientEmail)'}>*/}
-                <div className="has-error">
+                <div className="form-group">
                     <label>
                         Email:
                         <input required id="email" name="clientEmail" type ="text" className={`form-control ${this.errorClass(this.state.formErrors.clientEmail)}`} placeholder="name@example.com" onChange={this.handleChange}/>
@@ -324,7 +323,6 @@ class Form extends Component {
                     <label>Please upload any relevant information
                         <input type="file" className="form-control-file"/>                        
                     </label>
-
                 </div>
                 <div className="form-group">
                     <label>
