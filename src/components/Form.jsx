@@ -251,9 +251,26 @@ class Form extends Component {
                                 <input class="form-check-input" name="clientType" type="radio" id="investor" value="investor" onClick={this.handleChange}/>
                                 <label class="form-check-label" for="investor">investor?</label>
                             </div>
-                            <div class="form-check disabled">
+                            <div class="form-check">
                                 <input class="form-check-input" name="clientType" type="radio" id="partner" value="partner" onClick={this.handleChange}/>
                                 <label class="form-check-label" for="partner">collaborator?</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="form-group">
+                    <div class="row radios">
+                        <legend class="col-form-label col-sm-2 pt-0">Do you know the problem with your tap water?</legend>
+                    </div>
+                    <div class="row radios">
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" id="prob-yes" name="knowProb" type="radio" value="Yes" onClick={this.handleChange}/>
+                                <label class="form-check-label" for="prob-yes">Yes</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" id="prob-no" name="knowProb" type="radio" value="No" defaultChecked onClick={this.handleChange}/>
+                                <label class="form-check-label" for="prob-no">No</label>
                             </div>
                         </div>
                     </div>
