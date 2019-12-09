@@ -238,49 +238,26 @@ class Form extends Component {
                     </label>
                 </div>
                 <fieldset class="form-group">
-                    <div class="row">
-                        <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+                    <div class="row radios">
+                        <legend class="col-form-label col-sm-2 pt-0">Are you a potential...</legend>
                     </div>
-                    <div class="row">
+                    <div class="row radios">
                         <div class="col-sm-10">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked></input>
-                                <label class="form-check-label" for="gridRadios1">
-                                    First radio
-                                </label>
+                                <input class="form-check-input" name="clientType" type="radio" id="customer" value="customer" defaultChecked onClick={this.handleChange}/>
+                                <label class="form-check-label" for="customer">customer?</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2"></input>
-                                <label class="form-check-label" for="gridRadios2">
-                                    Second radio
-                            </label>
+                                <input class="form-check-input" name="clientType" type="radio" id="investor" value="investor" onClick={this.handleChange}/>
+                                <label class="form-check-label" for="investor">investor?</label>
                             </div>
                             <div class="form-check disabled">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled></input>
-                                <label class="form-check-label" for="gridRadios3">
-                                    Third disabled radio
-                                </label>
+                                <input class="form-check-input" name="clientType" type="radio" id="partner" value="partner" onClick={this.handleChange}/>
+                                <label class="form-check-label" for="partner">collaborator?</label>
                             </div>
                         </div>
                     </div>
                 </fieldset>
-
-                
-
-                <div className="form-group">
-                    <p>
-                        Are you a
-
-                            <input name="clientType" type="radio" id="customer" value="customer" defaultChecked onClick={this.handleChange}/>
-                            <label for="customer">potential customer?</label>
-
-                            <input name="clientType" type="radio" id="investor" value="investor" onClick={this.handleChange}/>
-                            <label for="investor">potential investor?</label>
-
-                            <input name="clientType" type="radio" id="partner" value="partner" onClick={this.handleChange}/>
-                            <label for="partner">potential collaborator?</label>
-                    </p>       
-                </div>
                 <div className="form-group">
                     <p>
                         Do you know the problem with your tap water?
