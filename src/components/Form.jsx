@@ -105,9 +105,6 @@ class Form extends Component {
     handleChange(event){
         const value = event.target.value;
         const name = event.target.name;
-        if(name === "clientCare") {
-            console.log(name, ": ", value);
-        }
         this.setState({[name]:value},
             () => {
                 this.validateField(name, value);
