@@ -26,7 +26,7 @@ class SignUpContainer extends Component {
 		console.log(this.state.username);
 		//request to server here
 		axios
-			.post('api/users', {
+			.post('api/users/login', {
 				username: this.state.username,
 				password: this.state.password
 			})

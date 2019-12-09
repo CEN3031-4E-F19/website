@@ -1,6 +1,7 @@
 var client = require('../controllers/client.server.controller.js')
     Article = require('../models/article.server.model')
-    User = require('../models/user.server.model')
+    //User = require('../models/user.server.model')
+    user = require('../controllers/user.server.controller')
     mongoose = require('mongoose')
     express = require('express')
     articleController = require('../controllers/article.server.controller')
@@ -58,8 +59,9 @@ router.delete('/clients/:clientId',client.delete);
 router.get('/clients/:clientId',client.findOne);
 router.get('/clients/',client.findAll);
 
+router.get('/users/',user.findAll);
 //login handle
-router.post('/users', passport.authenticate('local'), (req,res)=> {
+router.post('/users/login', passport.authenticate('local'), (req,res)=> {
   console.log("This is req.user from /login: " + JSON.stringify(req.user));
   console.log(
     "This is req.session from /login: " + JSON.stringify(req.session)
