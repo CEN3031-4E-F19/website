@@ -23,6 +23,7 @@ class ClientList extends Component {
             return(
                 <tr key = {client._id} onClick={() => selectedUpdate(client._id)}>
                     <td class = "Name">{client.clientName}</td>
+                    <td class = "Type">{client.clientType}</td>
                     <td class = "Email">{client.clientEmail}</td>
                     <td class = "Address">{client.clientAddress}</td>
                     <td class = {boolProb}>{client.anotherProb}</td>
