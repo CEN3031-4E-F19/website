@@ -10,7 +10,7 @@ tr{
     font-family: Arial;
 }
 td.Name{
-    width: 10%;
+    width: 20%;
 
     border: 1px solid black;
     word-wrap: break-word;
@@ -22,7 +22,7 @@ td.Email{
     word-wrap: break-word;
 }
 td.Address{
-    width: 30%;
+    width: 40%;
     border: 1px solid black;
     word-wrap: break-word;
 }
@@ -30,4 +30,23 @@ td.Questions{
     width: 40%;
     border: 1px solid black;
     word-wrap: break-word;
+}
+
+td.hasProb{
+    border: 1px solid black;
+    width: 10%;
+}
+
+td.noProb{
+    border: 1px solid black;
+    width: 10%;
+}
+td.hasaProb{
+    border: 1px solid black;
+     width: 10%;
+ }
+
+td.notaProb{
+    border: 1px solid black;
+    width: 10%;
 }

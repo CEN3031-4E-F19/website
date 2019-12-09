@@ -6,8 +6,7 @@ import NavBar from './components/NavBar';
 import Login from './components/Login'
 
 import AdminPanel from './components/AdminPanel';
-
-
+import News from './components/News'
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 
@@ -24,7 +23,6 @@ class App extends Component {
                   <Route path="/Contact">
                         <Form/>
                   </Route>
-
                   <Route path="/Admin">
                         <AdminPanel/>
                   </Route>
@@ -32,6 +30,9 @@ class App extends Component {
                     <Login/>
                   </Route>
 
+                  <Route path="/News">
+                        <News/>
+                  </Route>
                   <Route>
                         <Error/>
                   </Route>
