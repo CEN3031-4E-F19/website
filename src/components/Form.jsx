@@ -4,6 +4,7 @@ import { template } from '@babel/core';
 import { throwStatement, restElement } from '@babel/types';
 import FormError from './FormError';
 import axios from 'axios';
+import './Form.css';
 
 class Form extends Component {
     constructor(props) {
@@ -13,12 +14,13 @@ class Form extends Component {
             clientEmail: '',
             clientHouseAge: '',
             clientAddress: '',
+            clientType: 'customer',
             knowProb: 'No',
             clientQuestion: '',
             problemDesc: '',
             clientZip: '',
-            clientCare: '',
-            clientPay: '',
+            clientCare: 1,
+            clientPay: 10,
             anotherProb: 'No',
             waterTesting: 'No',
             formErrors: {
@@ -104,6 +106,9 @@ class Form extends Component {
     handleChange(event){
         const value = event.target.value;
         const name = event.target.name;
+        if(name === "clientCare") {
+            console.log(name, ": ", value);
+        }
         this.setState({[name]:value},
             () => {
                 this.validateField(name, value);
@@ -113,11 +118,14 @@ class Form extends Component {
     }
 
     handleSubmit(event){
-        
+        console.table(this.state);
+        event.preventDefault();
         const { clientName, 
                 clientEmail, 
                 clientHouseAge, 
                 clientAddress, 
+                clientZip,
+                clientType,
                 problemDesc, 
                 clientQuestion,
                 clientCare,
@@ -151,10 +159,11 @@ class Form extends Component {
         );
         */
         let clientObject = {
-            
             clientName: clientName, 
             clientEmail: clientEmail, 
             clientAddress: clientAddress, 
+            clientType: clientType,
+            clientZip: clientZip,
             clientHouseAge: clientHouseAge, 
             problemDesc: problemDesc, 
             clientQuestion: clientQuestion,
@@ -169,24 +178,11 @@ class Form extends Component {
                 //console.log('response', req);
             });
         
-        //event.preventDefault();
-        event.reset();
-        
-        
+        //event.reset();
     }
     
     errorClass(error) {
         return(error.length === 0 ? '' : 'is-invalid');
-    }
-
-    removeNonNums(event) {
-        //console.log('houseAge before: ', event.target.value);
-        this.setState(
-            {
-                clientHouseAge: event.target.value.replace(/\D/,'')
-            }
-        )  
-        //console.log(this.state);
     }
 
     render() { 
@@ -201,8 +197,7 @@ class Form extends Component {
                         <input required id="name" name="clientName" type="text" className={`form-control ${this.errorClass(this.state.formErrors.clientName)}`} onChange={this.handleChange}/>
                     </label>
                 </div>
-                {/*<div className={'${this.errorClass(this.state.formErrors.clientEmail)'}>*/}
-                <div className="has-error">
+                <div className="form-group">
                     <label>
                         Email:
                         <input required id="email" name="clientEmail" type ="text" className={`form-control ${this.errorClass(this.state.formErrors.clientEmail)}`} placeholder="name@example.com" onChange={this.handleChange}/>
@@ -236,53 +231,65 @@ class Form extends Component {
                         />
                     </label>
                 </div>
-                <div className="form-group">
-                    <p>
-                        Do you know the problem with your tap water?
-                    </p>
-                        <label>
-                            No {' '}
-                            <input name="knowProb"type="radio" value="No" defaultChecked onClick={this.handleChange}/>
-                        </label>
-                        <label className ="m-2">
-                            Yes {' '}
-                            <input name="knowProb" type="radio" value="Yes" onClick={this.handleChange}/>
-                        </label>
-                        
-                </div>
+                <fieldset class="form-group">
+                    <div class="row radios">
+                        <legend class="col-form-label col-sm-2 pt-0">Are you a potential...</legend>
+                    </div>
+                    <div class="row radios">
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" name="clientType" type="radio" id="customer" value="customer" defaultChecked onClick={this.handleChange}/>
+                                <label class="form-check-label" for="customer">customer?</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="clientType" type="radio" id="investor" value="investor" onClick={this.handleChange}/>
+                                <label class="form-check-label" for="investor">investor?</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="clientType" type="radio" id="partner" value="partner" onClick={this.handleChange}/>
+                                <label class="form-check-label" for="partner">partner/collaborator?</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="form-group">
+                    <div class="row radios">
+                        <legend class="col-form-label col-sm-2 pt-0">Do you know the problem with your tap water?</legend>
+                    </div>
+                    <div class="row radios">
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" id="prob-yes" name="knowProb" type="radio" value="Yes" onClick={this.handleChange}/>
+                                <label class="form-check-label" for="prob-yes">Yes</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" id="prob-no" name="knowProb" type="radio" value="No" defaultChecked onClick={this.handleChange}/>
+                                <label class="form-check-label" for="prob-no">No</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
                 <div className="form-group">
                     {this.state.knowProb==="Yes"? <label> Please describe your problem<textarea name ="problemDesc" cols="50" rows="5" className="form-control" row="3" onChange={this.handleChange}/></label>:
                     <span/>}
                 </div>
-                <div className="form-group">
-                    <p>
-                    Are you concerned about any water in your home other than tap water?
-                    </p>
-                        <label>
-                            No {' '}
-                            <input name="anotherProb"type="radio" value="No" defaultChecked onClick={this.handleChange}/>
-                        </label>
-                        <label class = 'no'>    
-                            Yes {' '}
-                            <input name="anotherProb" type="radio" value="Yes" onClick={this.handleChange}/>
-                        </label>
-
-                </div>
-                <div className="form-group">
-                    <p>
-                    Are you interested in having your water tested?
-                    </p>
-                        <label>
-                            No {' '}
-                            <input name="waterTesting"type="radio" value="No" defaultChecked onClick={this.handleChange}/>
-                        </label>
-                        <label className ="m-2">
-                            Yes {' '}
-                            <input name="waterTesting" type="radio" value="Yes" onClick={this.handleChange}/>
-                        </label>
-
-                </div>
-                                
+                <fieldset class="form-group">
+                    <div class="row radios">
+                        <legend class="col-form-label col-sm-2 pt-0">Are you interested in having your water tested?</legend>
+                    </div>
+                    <div class="row radios">
+                        <div class="col-sm-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" id="testing-yes" name="waterTesting" type="radio" value="Yes" onClick={this.handleChange}/>
+                                    <label class="form-check-label" for="testing-yes">Yes</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" id="testing-no" name="waterTesting" type="radio" value="No" defaultChecked onClick={this.handleChange}/>
+                                    <label class="form-check-label" for="testing-no">No</label>
+                                </div>
+                        </div>
+                    </div>
+                </fieldset>     
                 <div className="form-group">
                 <label> 
                     How much do you care about the quality of your tap water?
@@ -311,7 +318,6 @@ class Form extends Component {
                     <label>Please upload any relevant information
                         <input type="file" className="form-control-file"/>                        
                     </label>
-
                 </div>
                 <div className="form-group">
                     <label>

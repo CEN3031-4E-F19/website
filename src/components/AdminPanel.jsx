@@ -56,6 +56,7 @@ class AdminPanel extends Component {
                     <table className='table table-striped table-hover'>
                         <thead>
                             <th>Name</th>
+                            <th>Type</th>
                             <th>Email</th>
                             <th>Address</th>
                             <th>Has Water Problem</th>

@@ -15,6 +15,7 @@ router.post('/clientFormSubmit', (req, res) => {
     clientEmail,
     clientHouseAge,
     clientAddress,
+    clientType,
     clientZip,
     problem,
     knowProb,
@@ -29,7 +30,9 @@ router.post('/clientFormSubmit', (req, res) => {
   client.clientName = clientName;
   client.clientEmail = clientEmail;
   client.clientHouseAge = clientHouseAge;
+  client.clientType = clientType;
   client.clientAddress = clientAddress;
+  client.clientZip = clientZip;
   client.problem = problem;
   client.knowProb = knowProb;
   client.clientQuestion = clientQuestion;
@@ -38,7 +41,9 @@ router.post('/clientFormSubmit', (req, res) => {
   client.clientPay = clientPay;
   client.anotherProb = anotherProb;
   client.waterTesting = waterTesting;
+  client.clientType = clientType;
 
+  console.log(client);
   client.save((err) => {
     if (err) {
       throw err;

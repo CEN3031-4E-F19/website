@@ -5,6 +5,11 @@ button{
     width: 80px;
     border-radius: 8px;
 }
+delete {
+    justify-content: center;
+    padding-top: auto;
+    padding-bottom: auto;
+}
 tr{
     table-layout: fixed;
     font-family: Arial;
@@ -16,7 +21,7 @@ td.Name{
     word-wrap: break-word;
 }
 
-td.Email{
+td.Email, td.Type{
     width: 20%;
     border: 1px solid black;
     word-wrap: break-word;

@@ -15,18 +15,54 @@ class ViewClient extends Component{
         let client = data.find((x) => x._id == selectedClient);
         
         if(client){
+            console.log(client);
             display = (
-                <div>
-                    <h2>Client Information</h2>
-                    <h3 class = "please">Name: {client.clientName} </h3>
-                    <h3 className="please">Email: {client.clientEmail}</h3>
-                    <h3 className="please">House age: {client.clientHouseAge}</h3>
-                    <h3 className="please">Address: {client.clientAddress}</h3>
-                    <h3 className="please">Question: {client.clientQuestion}</h3>
-                    <h3 className="please">How much they care about their water (1-5): {client.clientCare}</h3>
-                    <h3 className="please">How much they would be willing to pay: ${client.clientPay}</h3>
-                    <h3 className="please">Are they interested in having their water tested: {client.waterTesting}</h3>
-                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="row">Client information</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Name</th>
+                            <td>{client.clientName}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Type</th>
+                            <td>{client.clientType}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Email</th>
+                            <td>{client.clientEmail}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">House age</th>
+                            <td>{client.clientHouseAge}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Address</th>
+                            <td>{client.clientAddress}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Question</th>
+                            <td>{client.clientQuestion}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">How much they care about their water (1-5)</th>
+                            <td>{client.clientCare}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">How much they would be willing to pay</th>
+                            <td>{client.clientPay}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Are they interested in having their water tested</th>
+                            <td>{client.waterTesting}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
             )
         }
 
