@@ -14,6 +14,7 @@ var clientSchema = new Schema({
   clientAddress: String,
   clientZip: Number,
   clientHouseAge: Number,
+  clientType: String,
   clientQuestion: String,
   clientCare: Number,
   clientPay: Number,
