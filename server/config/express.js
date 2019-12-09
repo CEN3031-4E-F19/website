@@ -3,6 +3,7 @@ const path = require('path'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
+    passport = require('passport'),
     router = require('../routes/client.server.routes.js');
 cors = require('cors');
 
@@ -36,6 +37,12 @@ module.exports.init = () => {
 
     // body parsing middleware
     app.use(bodyParser.json());
+
+    // passport middleware
+    app.use(passport.initialize());
+
+    // passport config
+    require('./passport')(passport);
 
     // add a router
     app.use('/api', router);
