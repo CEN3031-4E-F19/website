@@ -38,6 +38,8 @@ module.exports.init = () => {
     // body parsing middleware
     app.use(bodyParser.json());
 
+    app.use(bodyParser.urlencoded())
+
     // passport middleware
     app.use(passport.initialize());
 

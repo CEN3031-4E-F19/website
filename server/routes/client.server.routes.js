@@ -61,6 +61,26 @@ router.delete('/clients/:clientId',client.delete);
 router.get('/clients/:clientId',client.findOne);
 router.get('/clients/',client.findAll);
 
+
+
+router.post("/users/register", (req, res) => {
+      console.log(req.body)
+      var newUser = new User();
+      newUser.username = req.body.username;
+      newUser.password = req.body.password;
+      // Hash password before saving in database
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+          if (err) throw err;
+          newUser.password = hash;
+          newUser
+            .save()
+            .then(user => res.json(user))
+            .catch(err => console.log(err));
+        });
+      });
+    });
+
 //login handle
 router.post('/users/login', (req, res)=>{
   const username = req.body.username;
@@ -85,7 +105,7 @@ router.post('/users/login', (req, res)=>{
         //sign token
         jwt.sign(
           payload,
-          keys.secretOrKey,
+          keys.db.secretOrKey,
           {
             expiresIn: 31556926 // 1 year in seconds
           },
