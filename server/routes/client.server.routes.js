@@ -59,7 +59,7 @@ router.get('/clients/:clientId',client.findOne);
 router.get('/clients/',client.findAll);
 
 //login handle
-router.post('/login', passport.authenticate('local'), (req,res)=> {
+router.post('/users', passport.authenticate('local'), (req,res)=> {
   console.log("This is req.user from /login: " + JSON.stringify(req.user));
   console.log(
     "This is req.session from /login: " + JSON.stringify(req.session)
