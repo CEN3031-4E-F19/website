@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './AdminPanel.css';
 import ClientList from './ClientList';
 import ViewClient from './ViewClient';
-import Search from './Search';
+import Search from './AdminSearch';
 import axios from 'axios';
 
 class AdminPanel extends Component {
