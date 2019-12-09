@@ -1,6 +1,6 @@
 {
   "name": "four_e_website",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "dependencies": {
     "axios": "^0.19.0",
@@ -9,6 +9,7 @@
     "cors": "^2.8.5",
     "cron": "^1.7.2",
     "emailjs-com": "^2.4.1",
+    "express": "^4.17.1",
     "mongoose": "^5.7.11",
     "morgan": "^1.9.1",
     "node-cron": "^2.0.3",
