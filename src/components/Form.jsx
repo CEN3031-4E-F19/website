@@ -98,17 +98,13 @@ class Form extends Component {
     validateForm() {
         this.setState({
             formValid:  this.state.clientNameValid &&
-                        this.state.clientEmailValid &&
-                        this.state.clientAddressValid
+                        this.state.clientEmailValid
         });
     }
 
     handleChange(event){
         const value = event.target.value;
         const name = event.target.name;
-        if(name === "clientCare") {
-            console.log(name, ": ", value);
-        }
         this.setState({[name]:value},
             () => {
                 this.validateField(name, value);
@@ -292,7 +288,7 @@ class Form extends Component {
                 </fieldset>     
                 <div className="form-group">
                 <label> 
-                    How much do you care about the quality of your tap water?
+                    How much do you care about the quality of your tap water? (1 = least care; 5 = most care)
                 <select name="clientCare" onChange={this.handleChange}>
                     <option value="1">1</option>
                     <option value="2">2</option>
