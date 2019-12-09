@@ -20,7 +20,7 @@ class Form extends Component {
             problemDesc: '',
             clientZip: '',
             clientCare: '',
-            clientPay: '',
+            clientPay: '10',
             anotherProb: 'No',
             waterTesting: 'No',
             formErrors: {
@@ -106,7 +106,7 @@ class Form extends Component {
     handleChange(event){
         const value = event.target.value;
         const name = event.target.name;
-        if(name === "clientType") {
+        if(name === "clientPay") {
             console.log(name, ": ", value);
         }
         this.setState({[name]:value},
