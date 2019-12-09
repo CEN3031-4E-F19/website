@@ -276,51 +276,26 @@ class Form extends Component {
                     </div>
                 </fieldset>
                 <div className="form-group">
-                    <p>
-                        Do you know the problem with your tap water?
-                    </p>
-                        <label>
-                            No {' '}
-                            <input name="knowProb"type="radio" value="No" defaultChecked onClick={this.handleChange}/>
-                        </label>
-                        <label className ="m-2">
-                            Yes {' '}
-                            <input name="knowProb" type="radio" value="Yes" onClick={this.handleChange}/>
-                        </label>
-                </div>
-                <div className="form-group">
                     {this.state.knowProb==="Yes"? <label> Please describe your problem<textarea name ="problemDesc" cols="50" rows="5" className="form-control" row="3" onChange={this.handleChange}/></label>:
                     <span/>}
                 </div>
-                <div className="form-group">
-                    <p>
-                    Are you concerned about any water in your home other than tap water?
-                    </p>
-                        <label>
-                            No {' '}
-                            <input name="anotherProb"type="radio" value="No" defaultChecked onClick={this.handleChange}/>
-                        </label>
-                        <label class = 'no'>    
-                            Yes {' '}
-                            <input name="anotherProb" type="radio" value="Yes" onClick={this.handleChange}/>
-                        </label>
-
-                </div>
-                <div className="form-group">
-                    <p>
-                    Are you interested in having your water tested?
-                    </p>
-                        <label>
-                            No {' '}
-                            <input name="waterTesting"type="radio" value="No" defaultChecked onClick={this.handleChange}/>
-                        </label>
-                        <label className ="m-2">
-                            Yes {' '}
-                            <input name="waterTesting" type="radio" value="Yes" onClick={this.handleChange}/>
-                        </label>
-
-                </div>
-                                
+                <fieldset class="form-group">
+                    <div class="row radios">
+                        <legend class="col-form-label col-sm-2 pt-0">Are you interested in having your water tested?</legend>
+                    </div>
+                    <div class="row radios">
+                        <div class="col-sm-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" id="testing-yes" name="waterTesting" type="radio" value="Yes" onClick={this.handleChange}/>
+                                    <label class="form-check-label" for="testing-yes">Yes</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" id="testing-no" name="waterTesting" type="radio" value="No" defaultChecked onClick={this.handleChange}/>
+                                    <label class="form-check-label" for="testing-no">No</label>
+                                </div>
+                        </div>
+                    </div>
+                </fieldset>     
                 <div className="form-group">
                 <label> 
                     How much do you care about the quality of your tap water?
