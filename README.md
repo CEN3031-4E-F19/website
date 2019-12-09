@@ -25,3 +25,26 @@ node server.js
 ```
 npm run-script build
 ```
+5. Open up `localhost:5000` in a browser
+
+### Deploying the project on Heroku
+1. Ensure that you are on the `master` branch (run `git branch` to verify)
+2. Create a Heroku `remote` by executing 
+```
+heroku git:remote -a niekaab
+```
+3. Push master to the Heroku remote by executing
+```
+git push heroku master
+```
+4. Open up `niekaab.herokuapp.com` in a browser
+### APIs used
+- **Bootstrap** for styling
+- **EmailJS** for email notifications
+- **PassportJS** for user authentication (admin portal)
+- **cron** for scheduling (news)
+
+### Borrowed code
+- **Contact form** jsx borrowed from Bootstrap docs https://getbootstrap.com/docs/4.3/components/forms/
+- **Admin panel** tables borrowed from Bootstrap docs https://getbootstrap.com/docs/4.4/content/tables/
+- **Contact form** field validation borrowed from https://learnetto.com/blog/react-form-validation
