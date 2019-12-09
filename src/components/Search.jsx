@@ -9,7 +9,7 @@ class Search extends Component {
     render() { 
         return ( <form className ="text-center">
             <input type="text" ref="searchValue" 
-            placeHolder="Search Artilces..." className='search-bar'
+            placeHolder="Search Articles..." className='search-bar'
             onChange={this.filterUpdate.bind(this)}>
             </input>
         </form>  );
