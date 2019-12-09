@@ -1,8 +1,10 @@
 var client = require('../controllers/client.server.controller.js')
     Article = require('../models/article.server.model')
+    User = require('../models/user.server.model')
     mongoose = require('mongoose')
     express = require('express')
     articleController = require('../controllers/article.server.controller')
+    passport = require('passport')
     router = express.Router();
 
 
@@ -55,5 +57,26 @@ router.get('/getArticles',articleController.getAllArticles);
 router.delete('/clients/:clientId',client.delete);
 router.get('/clients/:clientId',client.findOne);
 router.get('/clients/',client.findAll);
+
+//login handle
+router.post('/login', passport.authenticate('local'), (req,res)=> {
+  console.log("This is req.user from /login: " + JSON.stringify(req.user));
+  console.log(
+    "This is req.session from /login: " + JSON.stringify(req.session)
+  );
+  req.session.userId = req.user._id;
+  res.locals.user = req.user;
+  res.locals.session = req.session;
+  const client = {
+    id: req.user._id,
+    username: req.user.username
+  };
+
+  return res.send({
+    success: true,
+    message: "successful login",
+    user: req.user
+  });
+})
 
 module.exports = router;
