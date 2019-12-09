@@ -14,6 +14,7 @@ class Form extends Component {
             clientEmail: '',
             clientHouseAge: '',
             clientAddress: '',
+            clientType: 'customer',
             knowProb: 'No',
             clientQuestion: '',
             problemDesc: '',
@@ -105,6 +106,9 @@ class Form extends Component {
     handleChange(event){
         const value = event.target.value;
         const name = event.target.name;
+        if(name === "clientType") {
+            console.log(name, ": ", value);
+        }
         this.setState({[name]:value},
             () => {
                 this.validateField(name, value);
@@ -114,11 +118,14 @@ class Form extends Component {
     }
 
     handleSubmit(event){
-        
+        console.table(this.state);
+        event.preventDefault();
         const { clientName, 
                 clientEmail, 
                 clientHouseAge, 
                 clientAddress, 
+                clientZip,
+                clientType,
                 problemDesc, 
                 clientQuestion,
                 clientCare,
@@ -152,10 +159,11 @@ class Form extends Component {
         );
         */
         let clientObject = {
-            
             clientName: clientName, 
             clientEmail: clientEmail, 
             clientAddress: clientAddress, 
+            clientType: clientType,
+            clientZip: clientZip,
             clientHouseAge: clientHouseAge, 
             problemDesc: problemDesc, 
             clientQuestion: clientQuestion,
@@ -170,24 +178,11 @@ class Form extends Component {
                 //console.log('response', req);
             });
         
-        //event.preventDefault();
-        event.reset();
-        
-        
+        //event.reset();
     }
     
     errorClass(error) {
         return(error.length === 0 ? '' : 'is-invalid');
-    }
-
-    removeNonNums(event) {
-        //console.log('houseAge before: ', event.target.value);
-        this.setState(
-            {
-                clientHouseAge: event.target.value.replace(/\D/,'')
-            }
-        )  
-        //console.log(this.state);
     }
 
     render() { 
@@ -252,7 +247,7 @@ class Form extends Component {
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" name="clientType" type="radio" id="partner" value="partner" onClick={this.handleChange}/>
-                                <label class="form-check-label" for="partner">collaborator?</label>
+                                <label class="form-check-label" for="partner">partner/collaborator?</label>
                             </div>
                         </div>
                     </div>
