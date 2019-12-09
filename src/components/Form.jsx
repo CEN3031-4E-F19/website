@@ -152,7 +152,6 @@ class Form extends Component {
         );
         */
         let clientObject = {
-            
             clientName: clientName, 
             clientEmail: clientEmail, 
             clientAddress: clientAddress, 

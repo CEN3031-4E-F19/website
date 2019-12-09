@@ -12,6 +12,7 @@ var clientSchema = new Schema({
   clientEmail: String,
   clientAddress: String,
   clientHouseAge: Number,
+  clientType: String,
   clientQuestion: String,
   clientCare: String,
   clientPay: Number,
