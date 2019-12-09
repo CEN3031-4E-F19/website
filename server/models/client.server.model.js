@@ -9,12 +9,14 @@ var mongoose = require('mongoose'),
 var clientSchema = new Schema({
 
   clientName: String,
+  clientType: String,
   clientEmail: String,
   clientAddress: String,
   clientZip: Number,
   clientHouseAge: Number,
+  clientType: String,
   clientQuestion: String,
-  clientCare: String,
+  clientCare: Number,
   clientPay: Number,
   anotherProb: String,
   waterTesting: String

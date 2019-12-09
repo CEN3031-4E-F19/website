@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class Search extends Component {
+
    filterUpdate(){
        this.props.filterUpdate(this.refs.searchValue.value);
    }
@@ -15,4 +16,5 @@ class Search extends Component {
     }
 }
  
+
 export default Search;
