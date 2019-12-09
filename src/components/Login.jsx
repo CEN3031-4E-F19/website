@@ -8,13 +8,21 @@ class SignUpContainer extends Component {
 			password:''
 		}
 		this.handleChange=this.handleChange.bind(this);
+		this.handleSubmit=this.handleSubmit.bind(this);
 	}
 	
 	handleChange(event){
         const value = event.target.value;
         const name = event.target.name;
         this.setState({[name]:value});
-    }
+	}
+	
+	handleSubmit(event){
+		event.preventDefault();
+		console.log('login-form, username: ');
+		console.log(this.state.username);
+		//request to server here
+	}
 
 
 	render() {
@@ -30,7 +38,7 @@ class SignUpContainer extends Component {
 					<input type='password' placeholder='password' name='password' onChange={this.handleChange}/>
 				</div>
 				<div className='signUpRow'>
-					<button type='button'>Login</button>
+					<button type='button' onClick={this.handleSubmit}>Login</button>
 				</div>
 			</form>
 			</div>
