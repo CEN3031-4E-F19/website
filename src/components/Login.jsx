@@ -42,7 +42,7 @@ class SignUpContainer extends Component {
 				console.log('login error: ')
 				console.log(error);
 				this.setState({
-					redirectTo: '/'
+					redirectTo: '/Login'
 				})
 			})
 	}
