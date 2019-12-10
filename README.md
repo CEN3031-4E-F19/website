@@ -50,13 +50,13 @@ git push heroku master
 - **Contact form** field validation borrowed from https://learnetto.com/blog/react-form-validation
 
 ### Features implemented
-## Home Page
+#### Home Page
 
 Provides information about the company's purpose.
 
 ![Screenshot of Home page](https://github.com/CEN3031-4E-F19/website/blob/readme-images/home_page.png "Home Page Screenshot")
 
-## Contact Form
+#### Contact Form
 Allows users to contact the company.
 
 ![Screenshot of blank Contact Form](https://github.com/CEN3031-4E-F19/website/blob/readme-images/contact_form_blank.png "Blank Contact Form Screenshot")
@@ -69,7 +69,7 @@ It will also check for invalid inputs and inform the user.
 
 ![Screenshot of incorrectly filled Contact Form](https://github.com/CEN3031-4E-F19/website/blob/readme-images/contact_form_invalid_input.png "Incorrectly Filled Contact Form Screenshot")
 
-## Up To Date News Feed
+#### Up To Date News Feed
 
 A news page is available which regularly updates with links to new articles.
 
@@ -79,7 +79,7 @@ The news page can also be searched by keyword.
 
 ![Screenshot of News Feed Search Function](https://github.com/CEN3031-4E-F19/website/blob/readme-images/news_page_search.png "News Feed Search Screenshot")
 
-## Admin Panel
+#### Admin Panel
 
 An administrator panel that is protected by login credentials.
 
