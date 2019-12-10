@@ -3,6 +3,7 @@ const path = require('path'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
+    passport = require('passport'),
     router = require('../routes/client.server.routes.js');
 cors = require('cors');
 
@@ -32,10 +33,24 @@ module.exports.init = () => {
         res.sendFile(path.join(__dirname, "../../public/index.html"))
     })
     */
+   app.get('/Admin', passport.authenticate('jwt', { session: false }),(req,res)=>{
+
+    req.sendFile(path.join(__dirname+'/client/build/index.html'));
+  }
+  
+);
     
 
     // body parsing middleware
     app.use(bodyParser.json());
+
+    app.use(bodyParser.urlencoded())
+
+    // passport middleware
+    app.use(passport.initialize());
+
+    // passport config
+    require('./passport')(passport);
 
     // add a router
     app.use('/api', router);
