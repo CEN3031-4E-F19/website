@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './AdminPanel.css';
 import ClientList from './ClientList';
 import ViewClient from './ViewClient';
-import Search from './Search';
+import Search from './AdminSearch';
 import axios from 'axios';
 
 class AdminPanel extends Component {
@@ -56,6 +56,7 @@ class AdminPanel extends Component {
                     <table className='table table-striped table-hover'>
                         <thead>
                             <th>Name</th>
+                            <th>Type</th>
                             <th>Email</th>
                             <th>Address</th>
                             <th>Has Water Problem</th>

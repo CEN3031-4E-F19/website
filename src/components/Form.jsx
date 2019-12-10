@@ -14,12 +14,13 @@ class Form extends Component {
             clientEmail: '',
             clientHouseAge: '',
             clientAddress: '',
+            clientType: 'customer',
             knowProb: 'No',
             clientQuestion: '',
             problemDesc: '',
             clientZip: '',
-            clientCare: '',
-            clientPay: '',
+            clientCare: 1,
+            clientPay: 10,
             anotherProb: 'No',
             waterTesting: 'No',
             formErrors: {
@@ -32,7 +33,7 @@ class Form extends Component {
                 problemDesc: '',
                 clientZip: '',
                 clientCare: '',
-                clientPay: '',
+                clientPay: true,
                 anotherProb: '',
                 waterTesting: ''
             },
@@ -48,14 +49,14 @@ class Form extends Component {
             clientPayValid: '',
             anotherProbValid: '',
             waterTestValid: ''
-          };
+        };
         this.handleChange=this.handleChange.bind(this);
         this.handleSubmit=this.handleSubmit.bind(this);
     }
 
     validateField(fieldName, value) {
         let fieldValidationErrors = this.state.formErrors;      /*This ValidateField Method is used to restrict entry in input fields to appropraite values */
-
+        
         switch(fieldName) {
             case 'clientName': {                /*Validates the client name field */
                 this.state.clientNameValid = value.length > 0;
@@ -82,6 +83,11 @@ class Form extends Component {
                 fieldValidationErrors.clientZip = this.state.clientZipValid ? '' : 'Please enter a valid zip code';
                 break;
             }
+            case 'clientPay': {
+                this.state.clientPayValid = !isNaN(value);
+                fieldValidationErrors.clientPay = this.state.clientPayValid ? '' : 'Please enter a valid payment amount';
+                break;
+            }
         }
         this.setState({                         //Checks to see the validity of the form inputs 
             formErrors: fieldValidationErrors,
@@ -89,17 +95,16 @@ class Form extends Component {
             clientEmailValid: this.state.clientEmailValid,
             clientHouseAgeValid: this.state.clientHouseAgeValid,
             clientAddressValid: this.state.clientAddressValid,
-            clientZipValid: this.state.clientZipValid
+            clientZipValid: this.state.clientZipValid,
+            clientPayValid: this.state.clientPayValid
         }, this.validateForm);
-
     }
 
     validateForm() {
         this.setState({
             formValid:  this.state.clientNameValid &&
-                        this.state.clientEmailValid &&
-                        this.state.clientAddressValid
-        });
+                        this.state.clientEmailValid
+        });        
     }
 
     handleChange(event){
@@ -114,18 +119,27 @@ class Form extends Component {
     }
 
     handleSubmit(event){
-        
-        const { clientName, 
-                clientEmail, 
-                clientHouseAge, 
-                clientAddress, 
-                problemDesc, 
-                clientQuestion,
-                clientCare,
-                clientPay,
-                anotherProb,
-                waterTesting
-             } = this.state;
+        event.preventDefault();
+        const { 
+            clientName, 
+            clientEmail, 
+            clientHouseAge, 
+            clientAddress, 
+            clientZip,
+            clientType,
+            problemDesc, 
+            clientQuestion,
+            clientCare,
+            clientPay,
+            anotherProb,
+            waterTesting
+        } = this.state;
+        if(!this.state.clientPay) {
+            this.setState({
+                clientPay: 10
+            });
+            clientPay = 10;
+        }
         let message = {
             clientHouseAge,
             clientAddress
@@ -155,6 +169,8 @@ class Form extends Component {
             clientName: clientName, 
             clientEmail: clientEmail, 
             clientAddress: clientAddress, 
+            clientType: clientType,
+            clientZip: clientZip,
             clientHouseAge: clientHouseAge, 
             problemDesc: problemDesc, 
             clientQuestion: clientQuestion,
@@ -163,30 +179,15 @@ class Form extends Component {
             anotherProb: anotherProb,
             waterTesting: waterTesting
         }
-        //console.log(clientObject);
         axios.post('api/clientFormSubmit', clientObject)
             .then((req, res) => {
-                //console.log('response', req);
             });
         
-        //event.preventDefault();
-        event.reset();
-        
-        
+        //event.reset();
     }
     
     errorClass(error) {
         return(error.length === 0 ? '' : 'is-invalid');
-    }
-
-    removeNonNums(event) {
-        //console.log('houseAge before: ', event.target.value);
-        this.setState(
-            {
-                clientHouseAge: event.target.value.replace(/\D/,'')
-            }
-        )  
-        //console.log(this.state);
     }
 
     render() { 
@@ -251,7 +252,7 @@ class Form extends Component {
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" name="clientType" type="radio" id="partner" value="partner" onClick={this.handleChange}/>
-                                <label class="form-check-label" for="partner">collaborator?</label>
+                                <label class="form-check-label" for="partner">partner/collaborator?</label>
                             </div>
                         </div>
                     </div>
@@ -296,7 +297,7 @@ class Form extends Component {
                 </fieldset>     
                 <div className="form-group">
                 <label> 
-                    How much do you care about the quality of your tap water?
+                    How much do you care about the quality of your tap water? (1 = least care; 5 = most care)
                 <select name="clientCare" onChange={this.handleChange}>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -316,6 +317,8 @@ class Form extends Component {
                     <option value="150">$150</option>
                     <option value="300">$300</option>
                 </select>
+                OR enter custom amount:
+                <input id="clientPay" name="clientPay" type="text" className="form-control" onChange={this.handleChange}/>
                 </label>
                 </div>
                 <div className="form-group">
