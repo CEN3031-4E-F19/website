@@ -1,8 +1,13 @@
 var client = require('../controllers/client.server.controller.js')
     Article = require('../models/article.server.model')
+    User = require('../models/user.server.model')
     mongoose = require('mongoose')
     express = require('express')
     articleController = require('../controllers/article.server.controller')
+    passport = require('passport')
+    bcrypt = require('bcryptjs')
+    jwt = require('jsonwebtoken')
+    keys = require('../config/config')
     router = express.Router();
 
 
@@ -60,5 +65,69 @@ router.get('/getArticles',articleController.getAllArticles);
 router.delete('/clients/:clientId',client.delete);
 router.get('/clients/:clientId',client.findOne);
 router.get('/clients/',client.findAll);
+
+
+
+router.post("/users/register", (req, res) => {
+      console.log(req.body)
+      var newUser = new User();
+      newUser.username = req.body.username;
+      newUser.password = req.body.password;
+      // Hash password before saving in database
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+          if (err) throw err;
+          newUser.password = hash;
+          newUser
+            .save()
+            .then(user => res.json(user))
+            .catch(err => console.log(err));
+        });
+      });
+    });
+
+//login handle
+router.post('/users/login', (req, res)=>{
+  const username = req.body.username;
+  const password = req.body.password;
+
+  //find user by email
+  User.findOne({username}).then(user=>{
+    if(!user) {
+      return res.status(404).json({usernamenotfound: "Username not found"});
+    }
+
+    //check password
+    bcrypt.compare(password,user.password).then(isMatch => {
+      if(isMatch) {
+        //user matched
+        //create JWT Payload
+        const payload = {
+          id: user._id,
+          username: user.username
+        };
+
+        //sign token
+        jwt.sign(
+          payload,
+          keys.db.secretOrKey,
+          {
+            expiresIn: 31556926 // 1 year in seconds
+          },
+          (err, token) => {
+            res.json({
+              success: true,
+              token: "Bearer " + token
+            });
+          }
+        );
+      } else {
+        return res
+          .status(400)
+          .json({passwordincorrect: "Password incorrect"});
+      }
+    });
+  });
+});
 
 module.exports = router;
