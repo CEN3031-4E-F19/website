@@ -48,3 +48,29 @@ git push heroku master
 - **Contact form** jsx borrowed from Bootstrap docs https://getbootstrap.com/docs/4.3/components/forms/
 - **Admin panel** tables borrowed from Bootstrap docs https://getbootstrap.com/docs/4.4/content/tables/
 - **Contact form** field validation borrowed from https://learnetto.com/blog/react-form-validation
+
+### Features implemented
+**Home Page**
+
+Provides information about the company's purpose.
+
+![Screenshot of Home page](https://github.com/CEN3031-4E-F19/website/blob/readme-images/home_page.png "Home Page Screenshot")
+
+**Contact Form**
+Allows users to contact the company.
+
+![Screenshot of blank Contact Form](https://github.com/CEN3031-4E-F19/website/blob/readme-images/contact_form_blank.png "Blank Contact Form Screenshot")
+
+Additional fields will appear depending on responses.
+
+![Screenshot of filled-out Contact Form](https://github.com/CEN3031-4E-F19/website/blob/readme-images/contact_form_filled_out.png "Filled-Out Contact Form Screenshot")
+
+It will also check for invalid inputs and inform the user.
+
+![Screenshot of incorrectly filled Contact Form](https://github.com/CEN3031-4E-F19/website/blob/readme-images/contact_form_invalid_input.png "Incorrectly Filled Contact Form Screenshot")
+
+**Up To Date News Feed**
+
+
+
+**Admin Panel**
