@@ -33,6 +33,12 @@ module.exports.init = () => {
         res.sendFile(path.join(__dirname, "../../public/index.html"))
     })
     */
+   app.get('/Admin', passport.authenticate('jwt', { session: false }),(req,res)=>{
+
+    req.sendFile(path.join(__dirname+'/client/build/index.html'));
+  }
+  
+);
     
 
     // body parsing middleware
